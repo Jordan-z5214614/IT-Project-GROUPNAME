@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center align-items-center h-100">
+  <form nz-form [formGroup]="loginForm" class="w-25" (ngSubmit)="login()">
+    <nz-form-item>
+      <nz-form-control nzHasFeedback [nzErrorTip]="emailTpl">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            email
+            nz-input
+            formControlName="email"
+            placeholder="someone@example.com"
+          />
+        </nz-input-group>
+        <ng-template #emailTpl let-control>
+          <ng-container *ngIf="email.hasError('email')"
+            >Email is not valid!</ng-container
+          >
+          <ng-container *ngIf="email.hasError('required')"
+            >Please input your email!</ng-container
+          >
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback [nzErrorTip]="passwordTpl">
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Password"
+          />
+        </nz-input-group>
+        <ng-template #passwordTpl let-control>
+          <ng-container *ngIf="password.hasError('required')"
+            >Please input your Password!</ng-container
+          >
+          <ng-container *ngIf="password.hasError('minlength')"
+            >Please can not be less than 6 characters!</ng-container
+          >
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <!-- <label nz-checkbox formControlName="remember">
+            <span>Remember me</span>
+          </label>
+          <a class="login-form-forgot" class="float-right text-info"
+            >Forgot password</a
+          > -->
+        <button nz-button class="w-100" [nzType]="'primary'">
+          Log in
+        </button>
+        <!-- Or
+          <a class="text-info">register now!</a> -->
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

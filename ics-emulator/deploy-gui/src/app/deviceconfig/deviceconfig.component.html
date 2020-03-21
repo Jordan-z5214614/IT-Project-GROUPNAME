@@ -1,0 +1,97 @@
+<!--<p>deviceconfig works!</p>-->
+<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 style="color:#fff">{{ProjectName}}</h3>
+				</div>	
+			</div>		
+   	<div class="row">
+	    <div class="col-md-8">
+	    	
+	    </div>
+	    <div class="col-md-4">
+	    	<button class="mt-4 d-flex align-items-center" nz-button nzType="primary" (click)="open(content)">
+	          	<i nz-icon nzType="plus" nzTheme="outline"></i>Add New Device
+	        </button>
+	    </div>
+  	</div>
+  <hr/>		
+  <p style="color:#fff">Devices List</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="" style="color:#fff">Device ID</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+		<tr *ngFor="let device of deviceDetail">
+			<td >
+				<p class="mt-4 d-flex align-items-center" style="color:#fff">{{device.deviceid}}</p>
+			</td>
+			<td>
+						<select class="mt-4 d-flex align-items-center" class="form-control" style="margin-top:20px;padding:0px" id={{device.id}}>
+							<option *ngFor="let flow of flows; let i = index" [value]="flows[i].id">
+								{{flows[i].flow}}
+							</option>
+						</select>
+			</td>
+			<td	>		
+					<button class="mt-4 d-flex align-items-center" nz-button nzType="primary" id="startid" (click)="startbutton(device.id)">
+							Start
+					  </button>
+			</td>
+			<td	>
+					  <button class="mt-4 d-flex align-items-center" nz-button nzType="primary" id="stopid" (click)="stopbutton(device.id)">
+							Stop
+					  </button>
+			</td>
+			<td	>
+					  <button class="mt-4 d-flex align-items-center" nz-button nzType="primary" (click)="resetbutton(device.id)">
+							Reset
+					  </button>
+			</td>
+		</tr>
+      	<tr>  
+    </tbody>
+  </table>
+  	<div>
+	  <ng-template #content let-modal>
+	  <div class="modal-header">
+	    <h4 class="modal-title" id="modal-basic-title">Add Detail</h4>
+	    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+	      <div class="form-group">
+	       	<label for="deviceId">Device ID</label>
+	        <div class="input-group">
+	          <input id="deviceId" class="form-control" placeholder="" formControlName="deviceid">
+	        </div>
+	       	<label for="ipAddress">IP Address</label>
+	        <div class="input-group">
+	          <input id="ipAddress" class="form-control" placeholder="" formControlName="ipAddress">
+	        </div>
+	       	<label for="host">Host</label>
+	        <div class="input-group">
+	          <input id="host" class="form-control" placeholder="" formControlName="host">
+			</div>
+			<input type="hidden" id="projectid" class="form-control" formControlName="projectid">
+	      </div>
+	      <div class="pull-right">
+	    	<input type="submit" class="pull-right btn btn-outline-dark" id="submit" value="Submit" />
+	      </div>
+	    </form>
+	  </div>
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+	  </div>
+	</ng-template>
+	</div>
+</div>
+
