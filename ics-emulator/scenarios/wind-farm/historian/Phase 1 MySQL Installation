@@ -1,0 +1,73 @@
+Phase 1 How to install MySQL on a Raspberry Pi
+
+It is assumed that the Raspbian OS has already been installed on the Raspberry Pi. 
+To save space, how to install Raspbian OS will not be discussed here. However, the instructions of the installation of Raspbian OS 
+will be listed at the end.
+
+Simply, at first, it is needed to set up an Apache web server and the latest version of PHP module on the Raspberry Pi. 
+Followingly, MySQL and PHPmyadmin will be installed. Also, the MySQL secure is needed to create users and their passwords to use
+PHPmyadmin. The specific steps and command lines used in Raspberry Pi terminals are listed below,
+
+1. Install Apache
+sudo apt-get update
+sudo apt-get install apache2 -y
+
+Test the web server
+http://localhost/ -----  where you should see the Apache2 Debian Default Page
+
+
+
+2. Install PHP
+sudo apt-get install php libapache2-mod-php -y
+
+Test PHP with http://localhost/index.php
+
+cd /var/www/html
+sudo leafpad index.php
+<?php echo "hello world"; ?> ----------------where you should see "hello world", which is not dynamic but still served by PHP. 
+<?php echo date('Y-m-d H:i:s'); ?> ----------where you should see the current/dynamic date
+<?php phpinfo(); ?>--------------------------where you should see PHP information page
+
+
+
+3. Install MySQL and PHPmyadmin
+sudo apt-get install -y mysql-server php-mysql phpmyadmin
+ATTENTION: mysql-server maybe doesn't exist anymore. However, the system will inform you of the new version(e.g. mariadb-version).
+
+Edit configuration file
+sudo nano /etc/apache2/apache2.conf
+Include /etc/phpmyadmin/apache.conf ----add this command line at the bottom and then save the file.
+sudo /etc/init.d/apache2 restart
+
+Test PHPmyadmin
+If phpmyadmin is installed successfully you should be able to login to http://localhost/phpmyadmin.
+ATTENTION: you cannot login with the user: root as you need to set at all privileges for the user 'root' to get access on the
+MySQL database.
+
+
+
+4. Install MySQL Secure
+sudo mysql_secure_installation
+
+After installation, you need to run MySQL to set all privileges for the user 'root' with the command lines below
+sudo -su ----- switch to root user
+
+mysql -u root - p ----start MySQL with passwords you just set up
+
+GRANT ALL PRIVILEGES on *.* to 'root'@'localhost' IDENTIFIED BY 'huey';
+FLUSH PRIVILEGES;
+\q
+service mysql stop
+service mysql start  ----restart MySQL
+
+Now, you can log into http://localhost/phpmyadmin with the username: root and the password: huey
+ATTENTION: if you have any problems with Step 4, the "MySQL Part #1" video can exactly demonstrate you step by step from 4:21 to the end.
+
+
+References:
+•	How to Install Raspbian on Raspberry Pi 3 https://www.youtube.com/watch?v=jsi50bCo_W4
+•	Installing operating system images https://www.raspberrypi.org/documentation/installation/installing-images/
+•	Setting up an Apache Web Server on a Raspberry Pi https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md
+•	MySQL and Node-RED With Raspberry Pi https://www.instructables.com/id/MySQL-and-Node-RED-With-Raspberry-Pi/
+•	MySQL Part #1 - How to install MySQL on the new RASPBIAN STRETCH OS https://www.youtube.com/watch?v=kQ0HoLva9Yc&t=21s
+

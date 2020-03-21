@@ -1,0 +1,18 @@
+Phase 2 Create Database 
+
+We will create a sample database with the PHPmyadmin set up in Phase 1. The purpose of the creation of the sample database is to prepare it 
+for Phase 3 where we will read out data from the MySQL table with Node-Red.
+
+How to create a MySQL table is clearly demonstrated in the tutorial video listed below. 
+
+However, you need to install python3-mysqldb to use database query in Python. Accordingly, the command lines are,
+   sudo python3 -m pip install pymysql ------  for python 3.4
+or
+   sudo apt-get install python-mysqldb ----- for python 2.7 
+   
+The sample python code, which is called 'write_read-sql.py',  is also attached in the Historian folder.
+
+
+
+References:
+•	MySQL Part #2 - Create a database and use it with Python https://www.youtube.com/watch?v=iycNe-ZThOM&t=3s

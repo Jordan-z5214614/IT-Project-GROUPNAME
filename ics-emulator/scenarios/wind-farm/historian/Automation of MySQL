@@ -1,0 +1,38 @@
+
+Automation of MySQL 
+
+update & Upgrade Raspbian OS by the command sudo apt-get update && sudo apt-get upgrade
+ install Docker curl -sSL https://get.docker.com | sh
+Add “pi” user to “docker” group sudo usermod -aG docker pi
+check the Docker version  docker version     This command is to check whether Docker has been installed successfully or not
+check the Docker Info & Errors  docker Info
+edit /boot/cmdline.txt file sudo nano /boot/cmdline.txt and add two parameters: cgroup_enable=memory swapaccount=1 at the end of these lines and reboot
+add Hello-world container docker run hello-world
+After the docker installation, I start to create the image and container of MySQL
+
+docker pull mysql:latest
+docker image to check whether the image of mysql has been pulled successfully
+docker run --name db -d -e MYSQL_ROOT_PASSWORD=123 -p 3306:3306 mysql:latest
+docker ps to find the ports and names of the mysql container
+docker exec -it db/bin/bash
+mysql username password
+touch Dockerfile   ---- create a file at the desktop
+vim Dockerfile
+
+FROM mysql:latest
+ENV MYSQL_ROOT_PASSWORD 123
+ENV MYSQL_DATABASE users
+ENV MYSQL_USER aminos
+ENV MYSQL_PASSWORD 1234
+ADD setup.sql/docker-entrypoint-initdb.d
+EXPOSE 3306
+
+docker build -t amine/mysql101
+docker image --- to check whether the mysql image and container has been created successfully
+
+
+References:
+
+Spinning MySQL Database with Docker https://www.youtube.com/watch?v=kOrGN36ViaU&t=2s
+Apache, PHP & MySql on Docker on Ubuntu 19.04 https://www.youtube.com/watch?v=w_aVnMmrASE
+

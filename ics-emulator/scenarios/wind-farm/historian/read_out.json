@@ -1,0 +1,1 @@
+[{"id":"621ed7fe.a4ae98","type":"function","z":"9cf0e182.402b4","name":"","func":"msg.temp = msg.payload.replace(\"temp=\", \"\").replace(\"'C\\n\", \"\")\nmsg.topic = \"INSERT INTO temperature(temp) VALUES( \" + msg.temp +\" );\" \nreturn msg;","outputs":1,"noerr":0,"x":390,"y":1120,"wires":[["b56cb467.9ee188","8b790a59.f26278"]]}]

@@ -1,0 +1,10 @@
+{
+    "name" : "node-red-contrib-pi-motor-hat",
+    ...
+    "node-red" : {
+        "nodes": {
+            "pi-motor-hat": "pi-motor-hat.js"
+        }
+        
+    }
+}
