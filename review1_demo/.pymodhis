@@ -1,0 +1,27 @@
+
+# 2020-03-23 12:33:06.625546
++help
+
+# 2020-03-23 12:34:44.955151
++client.write_coil(1,true)
+
+# 2020-03-23 12:34:54.553439
++client.write_coil(1, true)
+
+# 2020-03-23 12:34:58.653677
++client.write_coil(1, True)
+
+# 2020-03-23 12:35:06.228324
++client.write_coil(0, True)
+
+# 2020-03-23 12:35:23.829595
++client.connect
+
+# 2020-03-23 12:35:35.435768
++client.connect('localhost')
+
+# 2020-03-23 12:39:25.013448
++client.connect
+
+# 2020-03-23 12:39:39.859841
++client.state
