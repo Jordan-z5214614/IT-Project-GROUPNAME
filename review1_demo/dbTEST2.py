@@ -49,7 +49,7 @@ def main():
 
      createSensorFeedbackTable = """ CREATE TABLE IF NOT EXISTS sensorFeedback (
                                         timestamp datetime NOT NULL UNIQUE PRIMARY KEY,
-					outputPMWValue int,
+					outputPMWValue int
 					
                                     ); """
 	
