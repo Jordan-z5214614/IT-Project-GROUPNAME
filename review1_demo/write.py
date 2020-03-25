@@ -51,7 +51,7 @@ def writeWCNStoredData(conn, idNum, yourName, user, password, type):
 	
 	
 	
-def readSensorFeedback(conn):
+def printSensorFeedback(conn):
 	try:
     		c = conn.cursor()
     		c.execute("SELECT * FROM sensorFeedback")
@@ -66,7 +66,7 @@ def readSensorFeedback(conn):
 	
 	
 	
-def readSensorFeedin(conn):
+def printSensorFeedin(conn):
 	try:
     		c = conn.cursor()
     		c.execute("SELECT * FROM sensorFeedin")
@@ -81,7 +81,7 @@ def readSensorFeedin(conn):
 	
 	
 	
-def readHMIStoredData(conn):
+def printdHMIStoredData(conn):
 	try:
     		c = conn.cursor()
     		c.execute("SELECT * FROM sensorFeedin")
@@ -96,7 +96,7 @@ def readHMIStoredData(conn):
 	
 	
 	
-def readWCNStoredData(conn):
+def printWCNStoredData(conn):
 	try:
     		c = conn.cursor()
     		c.execute("SELECT * FROM sensorFeedin")
@@ -114,7 +114,74 @@ def readWCNStoredData(conn):
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+def readSensorFeedback(conn):
+	try:
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedback")
+ 
+    		rows = c.fetchall()
+ 
+    		return rows
+	
+	
+	
+def readSensorFeedin(conn):
+	try:
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedin")
+ 
+    		rows = c.fetchall()
+ 
+    		return rows
+	
+	
+	
+def readHMIStoredData(conn):
+	try:
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedin")
+ 
+    		rows = c.fetchall()
+ 
+    		return rows
+	
+	
+	
+def readWCNStoredData(conn):
+	try:
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedin")
+ 
+    		rows = c.fetchall()
+ 
+    		return rows
+	
+	
+	
+	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -136,7 +203,22 @@ def createConnection(databaseFileLocation):
 
     return conn
 
-		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 	
 
@@ -163,6 +245,11 @@ def main():
 		writeWCNStoredData(conn, 34, joe, man, n3end4, administration)
 	
 	
+		printSensorFeedback(conn)
+		printSensorFeedin(conn)
+		printHMIStoredData(conn)
+		printWCNStoredData(conn)
+		
 		readSensorFeedback(conn)
 		readSensorFeedin(conn)
 		readHMIStoredData(conn)
