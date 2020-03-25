@@ -1,22 +1,43 @@
 #!/usr/bin/env python3
 
-import write.py as write
+#Import Libraries
+from pymodbus.client.sync import ModbusTcpClient as ModbusClient
+import sqlite3
+from sqlite3 import Error
 import time
 
-from pymodbus.client.sync import ModbusTcpClient as ModbusClient
+#Writes a value to the database
+def writeSensorFeedback(con, time, output):
 
-client = ModbusCliebt("localhost", port=5020)
-client.connect()
-UNIT=0x01
+    try:
+        c = con.cursor()	#Sets the cursor
+        c.execute("INSERT INTO sensorFeedback (timestamp, outputPWMValue) VALUES (?, ?)", (time, output))	#SQL query
+        con.commit()	#commit changes
 
-con = write.createConnection("./db/log.db")
+    except Error as e:
+        print(e)
 
-while True:
+#Main program
+def main():
 
-    rr = client.read_holding_registers(1,1,unit=UNIT)
-    pwm = registers[0]
+    #Sets up modbus connection
+    client = ModbusClient("localhost", port=5020)
+    client.connect()
+    UNIT=0x01 #Slave address were recording for
 
-    time = time.strftime("%Y%m%d%H%M%S",time.localtime()) 
-    write.sensorFeedback(con,time,pwm)
+    con = sqlite3.connect("./db/log.db")	#Database location
 
-    time.sleep(1)
+    #Main loop
+    while True:
+
+        rr = client.read_holding_registers(1,1,unit=UNIT) 	#Get register 1 values
+        pwm = (rr.registers[0]/10)-1				#Convert to -1 - 1 format
+
+        time_now = time.strftime("%Y%m%d%H%M%S",time.localtime())	#Gets time now
+        writeSensorFeedback(con,time_now,pwm)				#Write to db
+
+        time.sleep(1)							#Wait 1 second
+
+
+if __name__ == '__main__':
+    main()
