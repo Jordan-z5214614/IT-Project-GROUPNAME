@@ -6,10 +6,19 @@ from sqlite3 import Error
 
 
 
+#THE FOLLOWING METHODS WRITE A RECORD TO EACH TABLE
+
+
+
+#This writes a record to the sensorFeedback table in your sqlLitedatabase.
+# conn - sql connection
+# time - YYYY-MM-DD HH-MM-SS date and time stamp 
+# output - integer representing the current pmw value
+# input - integer representing the id of the original 
 def writeSensorFeedback(conn, time, output, input):
 	try:
 		c = conn.cursor()
-		c.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue, originalInput) VALUES (?, ?, ?)", (time, output, input))
+		c.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue) VALUES (?, ?, ?)", (time, output))
 	
 	except Error as e:
         	print(e)
@@ -239,7 +248,7 @@ def main():
 		#TODO change to incoming test data
 	
 
-		writeSensorFeedback(conn, 2020-03-28 08:23:12, 1, 2020-03-28 08:23:12)
+		writeSensorFeedback(conn, 2020-03-28 08:23:12, 1)
 		writeSensorFeedin(conn, 2020-03-28 08:23:12, 7, -1)
 		writeHMIStoredData(conn, 789, smith, john, 2ejnfb3, administration)
 		writeWCNStoredData(conn, 34, joe, man, n3end4, administration)
