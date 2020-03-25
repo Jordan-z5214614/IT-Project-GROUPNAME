@@ -34,42 +34,64 @@ def writeWCNStoredData(conn, idNum, yourName, user, password, type):
 	
 	
 def readSensorFeedback(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM sensorFeedback")
+	try:
+    		cur = conn.cursor()
+    		cur.execute("SELECT * FROM sensorFeedback")
  
-    rows = cur.fetchall()
+    		rows = cur.fetchall()
  
-    for row in rows:
-        print(row)
+    		for row in rows:
+        		print(row)
+			
+	except Error as e:
+        	print(e)
+	
+	
 	
 def readSensorFeedin(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM sensorFeedin")
+	try:
+    		cur = conn.cursor()
+    		cur.execute("SELECT * FROM sensorFeedin")
  
-    rows = cur.fetchall()
+    		rows = cur.fetchall()
  
-    for row in rows:
-        print(row)
+    		for row in rows:
+        		print(row)
+			
+	except Error as e:
+        	print(e)
+	
+	
 	
 def readHMIStoredData(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM sensorFeedin")
+	try:
+    		cur = conn.cursor()
+    		cur.execute("SELECT * FROM sensorFeedin")
  
-    rows = cur.fetchall()
+    		rows = cur.fetchall()
  
-    for row in rows:
-        print(row)
+    		for row in rows:
+        		print(row)
+			
+	except Error as e:
+        	print(e)
+	
 	
 	
 def readWCNStoredData(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM sensorFeedin")
+	try:
+    		cur = conn.cursor()
+    		cur.execute("SELECT * FROM sensorFeedin")
  
-    rows = cur.fetchall()
+    		rows = cur.fetchall()
  
-    for row in rows:
-        print(row)
+    		for row in rows:
+       			print(row)
+			
+	except Error as e:
+        	print(e)
 	
+    
 
 	
 	
@@ -107,8 +129,45 @@ def connect():
 	
 def main():
 	
-	#Preset test data
-	connect()
+	databaseFileLocation = r"C:\sqlite\db\pythonsqlite.db"
+
+    	# creates a database connection
+    	conn = createConnection(databaseFileLocation)
+
+
+    	# read and writes from following tables if there is a connection
+    	if conn is not None:
+
+       	 	# inputs data into 
+        	createTables(conn, createSensorFeedbackTable)
+		
+		
+	
+		#Preset test data
+	
+	
+
+		writeSensorFeedback()
+		writeSensorFeedin()
+		writeHMIStoredData()
+		writeWCNStoredData()
+	
+	
+	
+	
+	
+		readSensorFeedback(conn)
+		readSensorFeedin(conn)
+		readHMIStoredData(conn)
+		readWCNStoredData(conn)
+		
+		
+
+   	 else:
+        	print("The database connection was not established.")
+
+	
+	
 	
 		
 		
