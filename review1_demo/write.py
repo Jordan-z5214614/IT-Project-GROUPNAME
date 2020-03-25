@@ -105,21 +105,18 @@ def readWCNStoredData(conn):
 	
 	
 	
-def connect():
-	databaseFileLocation = r"C:\sqlite\db\pythonsqlite.db"
+def createConnection(databaseFileLocation):
 
-    	# creates a database connection
-    	conn = createConnection(databaseFileLocation)
+    #create a database connection to the SQLite database specified by databaseFileLocation
+    conn = None
 
+    try:
+        conn = sqlite3.connect(databaseFileLocation)
+        return conn
+    except Error as e:
+        print(e)
 
-    	# read and writes from following tables if there is a connection
-    	if conn is not None:
-
-       	 	# inputs data into 
-        	createTables(conn, createSensorFeedbackTable)
-
-   	 else:
-        	print("The database connection was not established.")
+    return conn
 
 		
 		
