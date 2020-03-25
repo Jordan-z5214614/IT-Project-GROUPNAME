@@ -15,7 +15,7 @@ from sqlite3 import Error
 # time - YYYY-MM-DD HH-MM-SS date and time stamp 
 # output - integer representing the current pmw value
 # input - integer representing the id of the original 
-def writeSensorFeedback(conn, time, output, input):
+def writeSensorFeedback(conn, time, output):
 	try:
 		c = conn.cursor()
 		c.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue) VALUES (?, ?, ?)", (time, output))
