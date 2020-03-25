@@ -4,6 +4,7 @@
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 import sqlite3
 from sqlite3 import Error
+from datetime import datetime
 import time
 
 #Writes a value to the database
@@ -33,10 +34,10 @@ def main():
         rr = client.read_holding_registers(1,1,unit=UNIT) 	#Get register 1 values
         pwm = (rr.registers[0]/10)-1				#Convert to -1 - 1 format
 
-        time_now = time.strftime("%Y%m%d%H%M%S",time.localtime())	#Gets time now
+        time_now = datetime.now().strftime("%y%m%d%H%M%S.%f")	#Gets time now
         writeSensorFeedback(con,time_now,pwm)				#Write to db
 
-        time.sleep(1)							#Wait 1 second
+        time.sleep(0.5)							#Wait 1/2 second
 
 
 if __name__ == '__main__':
