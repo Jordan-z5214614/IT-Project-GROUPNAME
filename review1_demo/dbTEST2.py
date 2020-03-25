@@ -1,11 +1,12 @@
-#References:
-#
-#
-#
+
+#CREATES YOUR DATABASE AND TABLES
+
+
 
 
 import sqlite3
 from sqlite3 import Error
+
 
 
 
@@ -49,7 +50,7 @@ def main():
 
      createSensorFeedbackTable = """ CREATE TABLE IF NOT EXISTS sensorFeedback (
                                         timestamp datetime NOT NULL UNIQUE PRIMARY KEY,
-					outputPMWValue int
+					outputPMWValue float
 					
                                     ); """
 	
