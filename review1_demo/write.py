@@ -7,21 +7,39 @@ from sqlite3 import Error
 
 
 def writeSensorFeedback(conn, time, output, input):
-	c = conn.cursor()
-	c.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue, originalInput) VALUES (?, ?, ?)", (time, output, input))
-
+	try:
+		c = conn.cursor()
+		c.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue, originalInput) VALUES (?, ?, ?)", (time, output, input))
+	
+	except Error as e:
+        	print(e)
+		
+		
 def writeSensorFeedin(conn, date, hour, input):
-	c = conn.cursor()
-	c.execute("INSERT INTO sensorFeedin (currentDate, currentHour, inputPMWValue) VALUES (?, ?, ?)", (date, hour, input))
-
+	try:
+		c = conn.cursor()
+		c.execute("INSERT INTO sensorFeedin (currentDate, currentHour, inputPMWValue) VALUES (?, ?, ?)", (date, hour, input))
+	
+	except Error as e:
+        	print(e)
+		
+		
 def writeHMIStoredData(conn, idNum, yourName, user, password, type):
-	c = conn.cursor()
-	c.execute("INSERT INTO HMIStoredData (id, name, userName, PasswordHashed, UserType) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, type))
-
+	try:	
+		c = conn.cursor()
+		c.execute("INSERT INTO HMIStoredData (id, name, userName, PasswordHashed, UserType) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, type))
+		
+	except Error as e:
+        	print(e)
+	
+	
 def writeWCNStoredData(conn, idNum, yourName, user, password, type):
-	c = conn.cursor()
-	c.execute("INSERT INTO WCNStoredData (id, name, userName, PasswordHashed, aliasSystemID) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, alias))
-
+	try:
+		c = conn.cursor()
+		c.execute("INSERT INTO WCNStoredData (id, name, userName, PasswordHashed, aliasSystemID) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, alias))
+	
+	except Error as e:
+        	print(e)
 	
 	
 	
