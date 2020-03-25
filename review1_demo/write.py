@@ -3,6 +3,9 @@ from sqlite3 import Error
 
 
 
+
+
+
 def writeSensorFeedback(conn, time, output, input):
 	cur = conn.cursor()
 	cur.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue, originalInput) VALUES (?, ?, ?)", (time, output, input))
@@ -19,6 +22,17 @@ def writeWCNStoredData(conn, idNum, yourName, user, password, type):
 	cur = conn.cursor()
 	cur.execute("INSERT INTO WCNStoredData (id, name, userName, PasswordHashed, aliasSystemID) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, alias))
 
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
 def readSensorFeedback(conn):
     cur = conn.cursor()
     cur.execute("SELECT * FROM sensorFeedback")
@@ -57,6 +71,18 @@ def readWCNStoredData(conn):
         print(row)
 	
 
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 def connect()
 	database = r"C:\sqlite\db\pythonsqlite.db"
 
