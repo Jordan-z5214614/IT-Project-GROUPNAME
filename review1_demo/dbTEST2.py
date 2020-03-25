@@ -50,14 +50,13 @@ def main():
      createSensorFeedbackTable = """ CREATE TABLE IF NOT EXISTS sensorFeedback (
                                         timestamp datetime NOT NULL UNIQUE PRIMARY KEY,
 					outputPMWValue int,
-					FOREIGN KEY(originalInput) REFERENCES sensorFeedin(datetime)
 					
                                     ); """
 	
 
 
     createSensorFeedinTable = """ CREATE TABLE IF NOT EXISTS sensorFeedin (
-                                        currentDate date  NOT NULL UNIQUE PRIMARY KEY,
+                                        currentDate date  UNIQUE PRIMARY KEY,
 					currentHour int NOT NULL PRIMARY KEY,
                                         inputPMWValue int,
 
