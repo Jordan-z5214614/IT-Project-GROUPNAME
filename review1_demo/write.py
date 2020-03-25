@@ -83,8 +83,8 @@ def readWCNStoredData(conn):
 	
 	
 	
-def connect()
-	database = r"C:\sqlite\db\pythonsqlite.db"
+def connect():
+	databaseFileLocation = r"C:\sqlite\db\pythonsqlite.db"
 
     	# creates a database connection
     	conn = createConnection(databaseFileLocation)
@@ -99,6 +99,19 @@ def connect()
    	 else:
         	print("The database connection was not established.")
 
+		
+		
+	
+
+	
+	
+def main():
+	
+	#Preset test data
+	connect()
+	
+		
+		
 
 if __name__ == '__main__':
     main()
