@@ -7,20 +7,20 @@ from sqlite3 import Error
 
 
 def writeSensorFeedback(conn, time, output, input):
-	cur = conn.cursor()
-	cur.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue, originalInput) VALUES (?, ?, ?)", (time, output, input))
+	c = conn.cursor()
+	c.execute("INSERT INTO sensorFeedback (timestamp, outputPMWValue, originalInput) VALUES (?, ?, ?)", (time, output, input))
 
 def writeSensorFeedin(conn, date, hour, input):
-	cur = conn.cursor()
-	cur.execute("INSERT INTO sensorFeedin (currentDate, currentHour, inputPMWValue) VALUES (?, ?, ?)", (date, hour, input))
+	c = conn.cursor()
+	c.execute("INSERT INTO sensorFeedin (currentDate, currentHour, inputPMWValue) VALUES (?, ?, ?)", (date, hour, input))
 
 def writeHMIStoredData(conn, idNum, yourName, user, password, type):
-	cur = conn.cursor()
-	cur.execute("INSERT INTO HMIStoredData (id, name, userName, PasswordHashed, UserType) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, type))
+	c = conn.cursor()
+	c.execute("INSERT INTO HMIStoredData (id, name, userName, PasswordHashed, UserType) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, type))
 
 def writeWCNStoredData(conn, idNum, yourName, user, password, type):
-	cur = conn.cursor()
-	cur.execute("INSERT INTO WCNStoredData (id, name, userName, PasswordHashed, aliasSystemID) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, alias))
+	c = conn.cursor()
+	c.execute("INSERT INTO WCNStoredData (id, name, userName, PasswordHashed, aliasSystemID) VALUES (?, ?, ?, ?, ?)", (idNum, yourName, user, password, alias))
 
 	
 	
