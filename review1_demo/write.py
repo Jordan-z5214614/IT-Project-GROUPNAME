@@ -37,7 +37,7 @@ def readSensorFeedin(conn):
     for row in rows:
         print(row)
 	
-def readSensorFeedin(conn):
+def readHMIStoredData(conn):
     cur = conn.cursor()
     cur.execute("SELECT * FROM sensorFeedin")
  
@@ -47,7 +47,7 @@ def readSensorFeedin(conn):
         print(row)
 	
 	
-def readSensorFeedin(conn):
+def readWCNStoredData(conn):
     cur = conn.cursor()
     cur.execute("SELECT * FROM sensorFeedin")
  
