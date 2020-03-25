@@ -14,7 +14,6 @@ from sqlite3 import Error
 # conn - sql connection
 # time - YYYY-MM-DD HH-MM-SS date and time stamp 
 # output - integer representing the current pmw value
-# input - integer representing the id of the original 
 def writeSensorFeedback(conn, time, output):
 	try:
 		c = conn.cursor()
