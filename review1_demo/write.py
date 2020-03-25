@@ -35,10 +35,10 @@ def writeWCNStoredData(conn, idNum, yourName, user, password, type):
 	
 def readSensorFeedback(conn):
 	try:
-    		cur = conn.cursor()
-    		cur.execute("SELECT * FROM sensorFeedback")
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedback")
  
-    		rows = cur.fetchall()
+    		rows = c.fetchall()
  
     		for row in rows:
         		print(row)
@@ -50,10 +50,10 @@ def readSensorFeedback(conn):
 	
 def readSensorFeedin(conn):
 	try:
-    		cur = conn.cursor()
-    		cur.execute("SELECT * FROM sensorFeedin")
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedin")
  
-    		rows = cur.fetchall()
+    		rows = c.fetchall()
  
     		for row in rows:
         		print(row)
@@ -65,10 +65,10 @@ def readSensorFeedin(conn):
 	
 def readHMIStoredData(conn):
 	try:
-    		cur = conn.cursor()
-    		cur.execute("SELECT * FROM sensorFeedin")
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedin")
  
-    		rows = cur.fetchall()
+    		rows = c.fetchall()
  
     		for row in rows:
         		print(row)
@@ -80,10 +80,10 @@ def readHMIStoredData(conn):
 	
 def readWCNStoredData(conn):
 	try:
-    		cur = conn.cursor()
-    		cur.execute("SELECT * FROM sensorFeedin")
+    		c = conn.cursor()
+    		c.execute("SELECT * FROM sensorFeedin")
  
-    		rows = cur.fetchall()
+    		rows = c.fetchall()
  
     		for row in rows:
        			print(row)
@@ -137,23 +137,15 @@ def main():
 
     	# read and writes from following tables if there is a connection
     	if conn is not None:
-
-       	 	# inputs data into 
-        	createTables(conn, createSensorFeedbackTable)
-		
-		
 	
-		#Preset test data
-	
+		#Uses Preset test data 
+		#TODO change to incoming test data
 	
 
-		writeSensorFeedback()
-		writeSensorFeedin()
-		writeHMIStoredData()
-		writeWCNStoredData()
-	
-	
-	
+		writeSensorFeedback(conn, 2020-03-28 08:23:12, 1, 2020-03-28 08:23:12)
+		writeSensorFeedin(conn, 2020-03-28 08:23:12, 7, -1)
+		writeHMIStoredData(conn, 789, smith, john, 2ejnfb3, administration)
+		writeWCNStoredData(conn, 34, joe, man, n3end4, administration)
 	
 	
 		readSensorFeedback(conn)
