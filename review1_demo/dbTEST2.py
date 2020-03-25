@@ -43,7 +43,7 @@ def createTables(conn, createGivenTable):
 
 
 def main():
-    databaseFileLocation = r"C:\sqlite\db\pythonsqlite.db"
+    databaseFileLocation = r"C:/sqlite/db/database.db"
 
 
 
