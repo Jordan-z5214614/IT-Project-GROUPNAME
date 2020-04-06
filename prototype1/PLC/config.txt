@@ -1,0 +1,11 @@
+[address]
+address = 0x00
+
+[device drivers]
+dev0 = motorDriver
+dev1 = speedSensDriver
+
+[parameter addresses]
+targetRPM = 0
+pwm = 1
+rpm = 2
