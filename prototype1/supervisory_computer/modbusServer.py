@@ -24,12 +24,12 @@ from pymodbus.transaction import ModbusRtuFramer, ModbusBinaryFramer
 # --------------------------------------------------------------------------- #
 # configure the service logging
 # --------------------------------------------------------------------------- #
-import logging
-FORMAT = ('%(asctime)-15s %(threadName)-15s'
-          ' %(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s')
-logging.basicConfig(format=FORMAT)
-log = logging.getLogger()
-log.setLevel(logging.DEBUG)
+#import logging
+#FORMAT = ('%(asctime)-15s %(threadName)-15s'
+#          ' %(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s')
+#logging.basicConfig(format=FORMAT)
+#log = logging.getLogger()
+#log.setLevel(logging.DEBUG)
 
 
 def run_server():

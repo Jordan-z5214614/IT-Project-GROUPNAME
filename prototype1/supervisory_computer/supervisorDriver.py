@@ -1,24 +1,30 @@
 #!/usr/bin/env python3
-
+from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 from multiprocessing import Process
 import modbusServer
 import sys
 import time
 
 def main():
-    while True:
-        time.sleep(1)
-
-if __name__ == "__main__":
 
     server = Process(target=modbusServer.run_server)
-    driver = Process(target=main)
 
     try:
-        driver.start()
         server.start()
+
+        client = ModbusClient('localhost',5020)
+        client.connect()
+
+        while True:
+            pwm = input("Enter PWM: ")
+            client.write_register(0,int(pwm),unit=0)
+
     except KeyboardInterrupt:
         print("Shutting down")
         server.terminate()
-        driver.terminate()
 
+
+
+if __name__ == "__main__":
+
+    main()
