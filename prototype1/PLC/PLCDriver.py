@@ -5,20 +5,20 @@ import importlib
 import time
 import PLCLogic
 
-#Declare a dict to hold level 0 device drivers
-device_list = {}
-#Declare a dict to hold a parameter names and register addresses
-param_list = {}
+from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 
-def init():
+def load_config():
 
     #Read the config file into config object
     config = configparser.RawConfigParser()
     file = r'config.txt'
     config.read(file)
 
-    #Sets the address of this device from config
-    address = config.get('address','address')
+    return(config)
+
+def load_devices():
+
+    device_list = {}
 
     #Loads device drivers specified in config
     for device in config.items('device drivers'):
@@ -28,16 +28,38 @@ def init():
         device_driver = device_class()                                                  #Intialises an object of the driver class and stores in device_driver
         device_list.update({device[0]:device_driver})                                   #Stores the device name and driver object in device_list
 
-    param_list.update(config.items('parameter addresses'))
+    return(device_list)
+
+def load_client():
+
+    server_ip = config.get('server','ip')
+    server_port = config.get('server','port')
+
+    client = ModbusClient(server_ip,server_port)
+    client.connect()
+
+    return(client)
+
+#Loads the config file
+config = load_config()
+#Loads a dict that contains device names and addresses
+device_list = load_devices()
+#Loads a dict that holds parameter names and register addresses
+param_list = {}
+param_list.update(config.items('parameter addresses'))
+#Loads a string to hold the address of this device
+address = int(config.get('address','address'),16)                                   #Parses from hex (base 16)
+#Loads and initialises the modbus connection
+client = load_client()
 
 def writeModbus(register,value):
-    time.sleep(0.00001)
+    client.write_register(register,value,unit=address)
 def readModbus(register):
-    time.sleep(0.00001)
+    registers = client.read_holding_registers(register,unit=address)
+    return(registers.registers[0])
 
 def main():
 
-    init()
     PLCLogic.main(device_list, param_list, writeModbus, readModbus)
 
 

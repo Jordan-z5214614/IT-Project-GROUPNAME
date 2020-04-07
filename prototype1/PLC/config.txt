@@ -6,6 +6,10 @@ dev0 = motorDriver
 dev1 = speedSensDriver
 
 [parameter addresses]
-targetRPM = 0
+targetrpm = 0
 pwm = 1
 rpm = 2
+
+[server]
+ip = 192.168.1.105
+port = 5020
