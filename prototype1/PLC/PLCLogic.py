@@ -3,9 +3,11 @@ import time
 def main(device_list,param_list,writeModbus,readModbus):
 
     try:
+
+        writeModbus(int(param_list.get('targetrpm')),0)
         while True:
             time.sleep(0.5)
-            targetRPM = param_list.get('targetrpm')
+            targetRPM = readModbus(int(param_list.get('targetrpm')))
             if (targetRPM != 0):
                 device_list.get('dev0').setPwm(1,1)
             else:
