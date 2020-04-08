@@ -12,7 +12,7 @@ def main():
     try:
         server.start()
 
-        client = ModbusClient('localhost',5020)
+        client = ModbusClient('supevisor',5020)
         client.connect()
 
         while True:
