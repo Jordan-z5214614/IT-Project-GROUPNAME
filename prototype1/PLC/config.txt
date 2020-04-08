@@ -11,5 +11,5 @@ pwm = 1
 rpm = 2
 
 [server]
-ip = localhost
+hostname = supevisor
 port = 5020

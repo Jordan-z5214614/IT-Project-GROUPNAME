@@ -32,10 +32,10 @@ def load_devices():
 
 def load_client():
 
-    server_ip = config.get('server','ip')
+    server_hostname = config.get('server','hostname')
     server_port = config.get('server','port')
 
-    client = ModbusClient(server_ip,server_port)
+    client = ModbusClient(server_hostname,server_port)
     client.connect()
 
     return(client)
