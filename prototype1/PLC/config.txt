@@ -11,5 +11,5 @@ pwm = 1
 rpm = 2
 
 [server]
-hostname = supevisor
+hostname = supevisor.local
 port = 5020
