@@ -1,154 +1,87 @@
-2020-04-08 13:59:27,986 MainThread      ERROR    sync           :215      Connection to (supevisor, 5020) failed: [Errno 111] Connection refused
-2020-04-08 13:59:32,493 MainThread      DEBUG    sync           :347      Started thread to serve client at ('192.168.1.105', 40355)
-2020-04-08 13:59:32,495 Thread-1        DEBUG    sync           :46       Client Connected [192.168.1.105:40355]
-2020-04-08 13:59:32,496 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:32,496 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:32,497 Thread-1        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
-2020-04-08 13:59:32,498 Thread-1        DEBUG    context        :64       validate: fc-[6] address-1: count-1
-2020-04-08 13:59:32,498 Thread-1        DEBUG    context        :90       setValues[6] 1:1
-2020-04-08 13:59:32,498 Thread-1        DEBUG    context        :78       getValues fc-[6] address-1: count-1
-2020-04-08 13:59:32,499 Thread-1        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 0]- b'000100000006000600000000'
-2020-04-08 13:59:33,001 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:33,001 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:33,002 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:33,002 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:33,002 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:33,003 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0002000000050003020000'
-2020-04-08 13:59:33,511 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:33,511 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:33,512 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:33,512 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:33,512 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:33,513 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0003000000050003020000'
-2020-04-08 13:59:34,019 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,019 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,020 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:34,020 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:34,020 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:34,021 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0004000000050003020000'
-2020-04-08 13:59:34,525 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,525 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,526 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:34,526 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:34,527 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:34,527 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0005000000050003020000'
-2020-04-08 13:59:34,641 MainThread      DEBUG    transaction    :115      Current transaction state - IDLE
-2020-04-08 13:59:34,641 MainThread      DEBUG    sync           :347      Started thread to serve client at ('127.0.0.1', 42937)
-2020-04-08 13:59:34,641 MainThread      DEBUG    transaction    :120      Running transaction 1
-2020-04-08 13:59:34,642 MainThread      DEBUG    transaction    :219      SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,642 MainThread      DEBUG    sync           :75       New Transaction state 'SENDING'
-2020-04-08 13:59:34,643 Thread-2        DEBUG    sync           :46       Client Connected [127.0.0.1:42937]
-2020-04-08 13:59:34,643 MainThread      DEBUG    transaction    :228      Changing transaction state from 'SENDING' to 'WAITING FOR REPLY'
-2020-04-08 13:59:34,644 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,644 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,644 Thread-2        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
-2020-04-08 13:59:34,645 Thread-2        DEBUG    context        :64       validate: fc-[6] address-1: count-1
-2020-04-08 13:59:34,645 Thread-2        DEBUG    context        :90       setValues[6] 1:1
-2020-04-08 13:59:34,645 Thread-2        DEBUG    context        :78       getValues fc-[6] address-1: count-1
-2020-04-08 13:59:34,646 Thread-2        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 1]- b'000100000006000600000001'
-2020-04-08 13:59:34,646 MainThread      DEBUG    transaction    :304      Changing transaction state from 'WAITING FOR REPLY' to 'PROCESSING REPLY'
-2020-04-08 13:59:34,647 MainThread      DEBUG    transaction    :233      RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,647 MainThread      DEBUG    socket_framer  :147      Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:34,648 MainThread      DEBUG    factory        :266      Factory Response[WriteSingleRegisterResponse: 6]
-2020-04-08 13:59:34,648 MainThread      DEBUG    transaction    :383      Adding transaction 1
-2020-04-08 13:59:34,648 MainThread      DEBUG    transaction    :394      Getting transaction 1
-2020-04-08 13:59:34,649 MainThread      DEBUG    transaction    :193      Changing transaction state from 'PROCESSING REPLY' to 'TRANSACTION_COMPLETE'
-2020-04-08 13:59:35,032 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:35,033 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:35,033 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:35,033 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:35,034 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:35,034 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0006000000050003020001'
-2020-04-08 13:59:35,539 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:35,540 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:35,540 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:35,540 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:35,541 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:35,541 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0007000000050003020001'
-2020-04-08 13:59:35,689 MainThread      DEBUG    transaction    :115      Current transaction state - TRANSACTION_COMPLETE
-2020-04-08 13:59:35,690 MainThread      DEBUG    transaction    :120      Running transaction 2
-2020-04-08 13:59:35,690 MainThread      DEBUG    transaction    :219      SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:35,690 MainThread      DEBUG    sync           :75       New Transaction state 'SENDING'
-2020-04-08 13:59:35,691 MainThread      DEBUG    transaction    :228      Changing transaction state from 'SENDING' to 'WAITING FOR REPLY'
-2020-04-08 13:59:35,691 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:35,691 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:35,692 Thread-2        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
-2020-04-08 13:59:35,692 Thread-2        DEBUG    context        :64       validate: fc-[6] address-1: count-1
-2020-04-08 13:59:35,692 Thread-2        DEBUG    context        :90       setValues[6] 1:1
-2020-04-08 13:59:35,693 Thread-2        DEBUG    context        :78       getValues fc-[6] address-1: count-1
-2020-04-08 13:59:35,693 Thread-2        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 0]- b'000200000006000600000000'
-2020-04-08 13:59:35,693 MainThread      DEBUG    transaction    :304      Changing transaction state from 'WAITING FOR REPLY' to 'PROCESSING REPLY'
-2020-04-08 13:59:35,694 MainThread      DEBUG    transaction    :233      RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:35,694 MainThread      DEBUG    socket_framer  :147      Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:35,695 MainThread      DEBUG    factory        :266      Factory Response[WriteSingleRegisterResponse: 6]
-2020-04-08 13:59:35,695 MainThread      DEBUG    transaction    :383      Adding transaction 2
-2020-04-08 13:59:35,695 MainThread      DEBUG    transaction    :394      Getting transaction 2
-2020-04-08 13:59:35,695 MainThread      DEBUG    transaction    :193      Changing transaction state from 'PROCESSING REPLY' to 'TRANSACTION_COMPLETE'
-2020-04-08 13:59:36,046 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,047 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,047 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:36,047 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:36,048 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:36,048 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0008000000050003020000'
-2020-04-08 13:59:36,479 MainThread      DEBUG    transaction    :115      Current transaction state - TRANSACTION_COMPLETE
-2020-04-08 13:59:36,479 MainThread      DEBUG    transaction    :120      Running transaction 3
-2020-04-08 13:59:36,479 MainThread      DEBUG    transaction    :219      SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,480 MainThread      DEBUG    sync           :75       New Transaction state 'SENDING'
-2020-04-08 13:59:36,480 MainThread      DEBUG    transaction    :228      Changing transaction state from 'SENDING' to 'WAITING FOR REPLY'
-2020-04-08 13:59:36,480 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,481 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,481 Thread-2        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
-2020-04-08 13:59:36,481 Thread-2        DEBUG    context        :64       validate: fc-[6] address-1: count-1
-2020-04-08 13:59:36,482 Thread-2        DEBUG    context        :90       setValues[6] 1:1
-2020-04-08 13:59:36,482 Thread-2        DEBUG    context        :78       getValues fc-[6] address-1: count-1
-2020-04-08 13:59:36,482 Thread-2        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 1]- b'000300000006000600000001'
-2020-04-08 13:59:36,483 MainThread      DEBUG    transaction    :304      Changing transaction state from 'WAITING FOR REPLY' to 'PROCESSING REPLY'
-2020-04-08 13:59:36,483 MainThread      DEBUG    transaction    :233      RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,484 MainThread      DEBUG    socket_framer  :147      Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,484 MainThread      DEBUG    factory        :266      Factory Response[WriteSingleRegisterResponse: 6]
-2020-04-08 13:59:36,484 MainThread      DEBUG    transaction    :383      Adding transaction 3
-2020-04-08 13:59:36,485 MainThread      DEBUG    transaction    :394      Getting transaction 3
-2020-04-08 13:59:36,485 MainThread      DEBUG    transaction    :193      Changing transaction state from 'PROCESSING REPLY' to 'TRANSACTION_COMPLETE'
-2020-04-08 13:59:36,553 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x9 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,554 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x9 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:36,554 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:36,554 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:36,555 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:36,555 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0009000000050003020001'
-2020-04-08 13:59:37,060 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0xa 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:37,060 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0xa 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:37,061 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:37,061 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:37,061 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:37,062 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'000a000000050003020001'
-2020-04-08 13:59:37,169 MainThread      DEBUG    transaction    :115      Current transaction state - TRANSACTION_COMPLETE
-2020-04-08 13:59:37,169 MainThread      DEBUG    transaction    :120      Running transaction 4
-2020-04-08 13:59:37,170 MainThread      DEBUG    transaction    :219      SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:37,170 MainThread      DEBUG    sync           :75       New Transaction state 'SENDING'
-2020-04-08 13:59:37,170 MainThread      DEBUG    transaction    :228      Changing transaction state from 'SENDING' to 'WAITING FOR REPLY'
-2020-04-08 13:59:37,170 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:37,171 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:37,171 Thread-2        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
-2020-04-08 13:59:37,171 Thread-2        DEBUG    context        :64       validate: fc-[6] address-1: count-1
-2020-04-08 13:59:37,172 Thread-2        DEBUG    context        :90       setValues[6] 1:1
-2020-04-08 13:59:37,172 Thread-2        DEBUG    context        :78       getValues fc-[6] address-1: count-1
-2020-04-08 13:59:37,172 Thread-2        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 0]- b'000400000006000600000000'
-2020-04-08 13:59:37,173 MainThread      DEBUG    transaction    :304      Changing transaction state from 'WAITING FOR REPLY' to 'PROCESSING REPLY'
-2020-04-08 13:59:37,173 MainThread      DEBUG    transaction    :233      RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:37,174 MainThread      DEBUG    socket_framer  :147      Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
-2020-04-08 13:59:37,174 MainThread      DEBUG    factory        :266      Factory Response[WriteSingleRegisterResponse: 6]
-2020-04-08 13:59:37,175 MainThread      DEBUG    transaction    :383      Adding transaction 4
-2020-04-08 13:59:37,175 MainThread      DEBUG    transaction    :394      Getting transaction 4
-2020-04-08 13:59:37,175 MainThread      DEBUG    transaction    :193      Changing transaction state from 'PROCESSING REPLY' to 'TRANSACTION_COMPLETE'
-2020-04-08 13:59:37,567 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0xb 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:37,567 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0xb 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:37,570 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:37,570 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:37,571 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:37,571 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'000b000000050003020000'
-2020-04-08 13:59:38,076 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0xc 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:38,077 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0xc 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
-2020-04-08 13:59:38,077 Thread-1        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
-2020-04-08 13:59:38,077 Thread-1        DEBUG    context        :64       validate: fc-[3] address-1: count-1
-2020-04-08 13:59:38,078 Thread-1        DEBUG    context        :78       getValues fc-[3] address-1: count-1
-2020-04-08 13:59:38,078 Thread-1        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'000c000000050003020000'
+2020-04-09 12:47:32,378 MainThread      DEBUG    sync           :362      Modbus server stopped
+2020-04-09 12:47:32,388 Thread-1        DEBUG    transport      :1819     starting thread (client mode): 0xb5b099b0
+2020-04-09 12:47:32,389 Thread-1        DEBUG    transport      :1819     Local version/idstring: SSH-2.0-paramiko_2.7.1
+2020-04-09 12:47:32,435 Thread-1        DEBUG    transport      :1819     Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u2
+2020-04-09 12:47:32,436 Thread-1        INFO     transport      :1819     Connected (version 2.0, client OpenSSH_7.9p1)
+2020-04-09 12:47:32,443 Thread-1        DEBUG    transport      :1819     kex algos:['curve25519-sha256', 'curve25519-sha256@libssh.org', 'ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group16-sha512', 'diffie-hellman-group18-sha512', 'diffie-hellman-group14-sha256', 'diffie-hellman-group14-sha1'] server key:['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa', 'ecdsa-sha2-nistp256', 'ssh-ed25519'] client encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] server encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] client mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] server mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2020-04-09 12:47:32,444 Thread-1        DEBUG    transport      :1819     Kex agreed: curve25519-sha256@libssh.org
+2020-04-09 12:47:32,444 Thread-1        DEBUG    transport      :1819     HostKey agreed: ecdsa-sha2-nistp256
+2020-04-09 12:47:32,444 Thread-1        DEBUG    transport      :1819     Cipher agreed: aes128-ctr
+2020-04-09 12:47:32,444 Thread-1        DEBUG    transport      :1819     MAC agreed: hmac-sha2-256
+2020-04-09 12:47:32,444 Thread-1        DEBUG    transport      :1819     Compression agreed: none
+2020-04-09 12:47:32,486 Thread-1        DEBUG    transport      :1819     kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2020-04-09 12:47:32,487 Thread-1        DEBUG    transport      :1819     Switch to new keys ...
+2020-04-09 12:47:32,528 Thread-1        DEBUG    transport      :1819     userauth is OK
+2020-04-09 12:47:32,636 Thread-1        INFO     transport      :1819     Authentication (password) successful!
+2020-04-09 12:47:32,637 MainThread      DEBUG    channel        :1212     [chan 0] Max packet in: 32768 bytes
+2020-04-09 12:47:32,707 Thread-1        DEBUG    transport      :1819     Received global request "hostkeys-00@openssh.com"
+2020-04-09 12:47:32,707 Thread-1        DEBUG    transport      :1819     Rejecting "hostkeys-00@openssh.com" global request from server.
+2020-04-09 12:47:32,754 Thread-1        DEBUG    channel        :1212     [chan 0] Max packet out: 32768 bytes
+2020-04-09 12:47:32,754 Thread-1        DEBUG    transport      :1819     Secsh channel 0 opened.
+2020-04-09 12:47:32,757 Thread-1        DEBUG    channel        :1212     [chan 0] Sesch channel 0 request ok
+2020-04-09 12:47:32,757 MainThread      DEBUG    channel        :1212     [chan 0] EOF sent (0)
+2020-04-09 12:47:32,758 MainThread      ERROR    sync           :215      Connection to (supevisor, 5020) failed: [Errno 111] Connection refused
+2020-04-09 12:47:32,932 Thread-1        DEBUG    channel        :1212     [chan 0] EOF received (0)
+2020-04-09 12:47:40,624 MainThread      ERROR    sync           :215      Connection to (supevisor, 5020) failed: [Errno 111] Connection refused
+2020-04-09 12:48:29,932 Thread-1        DEBUG    transport      :1819     starting thread (client mode): 0xb5ae8930
+2020-04-09 12:48:29,932 Thread-1        DEBUG    transport      :1819     Local version/idstring: SSH-2.0-paramiko_2.7.1
+2020-04-09 12:48:29,978 Thread-1        DEBUG    transport      :1819     Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u2
+2020-04-09 12:48:29,978 Thread-1        INFO     transport      :1819     Connected (version 2.0, client OpenSSH_7.9p1)
+2020-04-09 12:48:29,986 Thread-1        DEBUG    transport      :1819     kex algos:['curve25519-sha256', 'curve25519-sha256@libssh.org', 'ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group16-sha512', 'diffie-hellman-group18-sha512', 'diffie-hellman-group14-sha256', 'diffie-hellman-group14-sha1'] server key:['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa', 'ecdsa-sha2-nistp256', 'ssh-ed25519'] client encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] server encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] client mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] server mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2020-04-09 12:48:29,986 Thread-1        DEBUG    transport      :1819     Kex agreed: curve25519-sha256@libssh.org
+2020-04-09 12:48:29,986 Thread-1        DEBUG    transport      :1819     HostKey agreed: ecdsa-sha2-nistp256
+2020-04-09 12:48:29,986 Thread-1        DEBUG    transport      :1819     Cipher agreed: aes128-ctr
+2020-04-09 12:48:29,986 Thread-1        DEBUG    transport      :1819     MAC agreed: hmac-sha2-256
+2020-04-09 12:48:29,986 Thread-1        DEBUG    transport      :1819     Compression agreed: none
+2020-04-09 12:48:30,019 Thread-1        DEBUG    transport      :1819     kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2020-04-09 12:48:30,020 Thread-1        DEBUG    transport      :1819     Switch to new keys ...
+2020-04-09 12:48:30,068 Thread-1        DEBUG    transport      :1819     userauth is OK
+2020-04-09 12:48:30,181 Thread-1        INFO     transport      :1819     Authentication (password) successful!
+2020-04-09 12:48:30,182 MainThread      DEBUG    channel        :1212     [chan 0] Max packet in: 32768 bytes
+2020-04-09 12:48:30,287 Thread-1        DEBUG    transport      :1819     Received global request "hostkeys-00@openssh.com"
+2020-04-09 12:48:30,287 Thread-1        DEBUG    transport      :1819     Rejecting "hostkeys-00@openssh.com" global request from server.
+2020-04-09 12:48:30,334 Thread-1        DEBUG    channel        :1212     [chan 0] Max packet out: 32768 bytes
+2020-04-09 12:48:30,334 Thread-1        DEBUG    transport      :1819     Secsh channel 0 opened.
+2020-04-09 12:48:30,337 Thread-1        DEBUG    channel        :1212     [chan 0] Sesch channel 0 request ok
+2020-04-09 12:48:30,338 MainThread      DEBUG    channel        :1212     [chan 0] EOF sent (0)
+2020-04-09 12:48:30,340 MainThread      DEBUG    sync           :347      Started thread to serve client at ('127.0.0.1', 35417)
+2020-04-09 12:48:30,341 Thread-1        DEBUG    sync           :46       Client Connected [127.0.0.1:35417]
+2020-04-09 12:48:30,534 Thread-1        DEBUG    channel        :1212     [chan 0] EOF received (0)
+2020-04-09 12:48:38,096 MainThread      DEBUG    transaction    :115      Current transaction state - IDLE
+2020-04-09 12:48:38,096 MainThread      DEBUG    transaction    :120      Running transaction 1
+2020-04-09 12:48:38,097 MainThread      DEBUG    transaction    :219      SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
+2020-04-09 12:48:38,097 MainThread      DEBUG    sync           :75       New Transaction state 'SENDING'
+2020-04-09 12:48:38,098 MainThread      DEBUG    transaction    :228      Changing transaction state from 'SENDING' to 'WAITING FOR REPLY'
+2020-04-09 12:48:38,098 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
+2020-04-09 12:48:38,099 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
+2020-04-09 12:48:38,100 Thread-1        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
+2020-04-09 12:48:38,100 Thread-1        DEBUG    context        :64       validate: fc-[6] address-1: count-1
+2020-04-09 12:48:38,101 Thread-1        DEBUG    context        :90       setValues[6] 1:1
+2020-04-09 12:48:38,101 Thread-1        DEBUG    context        :78       getValues fc-[6] address-1: count-1
+2020-04-09 12:48:38,101 Thread-1        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 1]- b'000100000006000600000001'
+2020-04-09 12:48:38,102 MainThread      DEBUG    transaction    :304      Changing transaction state from 'WAITING FOR REPLY' to 'PROCESSING REPLY'
+2020-04-09 12:48:38,103 MainThread      DEBUG    transaction    :233      RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
+2020-04-09 12:48:38,103 MainThread      DEBUG    socket_framer  :147      Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x1
+2020-04-09 12:48:38,104 MainThread      DEBUG    factory        :266      Factory Response[WriteSingleRegisterResponse: 6]
+2020-04-09 12:48:38,104 MainThread      DEBUG    transaction    :383      Adding transaction 1
+2020-04-09 12:48:38,105 MainThread      DEBUG    transaction    :394      Getting transaction 1
+2020-04-09 12:48:38,105 MainThread      DEBUG    transaction    :193      Changing transaction state from 'PROCESSING REPLY' to 'TRANSACTION_COMPLETE'
+2020-04-09 12:48:40,259 MainThread      DEBUG    transaction    :115      Current transaction state - TRANSACTION_COMPLETE
+2020-04-09 12:48:40,259 MainThread      DEBUG    transaction    :120      Running transaction 2
+2020-04-09 12:48:40,260 MainThread      DEBUG    transaction    :219      SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 12:48:40,260 MainThread      DEBUG    sync           :75       New Transaction state 'SENDING'
+2020-04-09 12:48:40,260 MainThread      DEBUG    transaction    :228      Changing transaction state from 'SENDING' to 'WAITING FOR REPLY'
+2020-04-09 12:48:40,260 Thread-1        DEBUG    sync           :199      Handling data: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 12:48:40,261 Thread-1        DEBUG    socket_framer  :147      Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 12:48:40,261 Thread-1        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
+2020-04-09 12:48:40,262 Thread-1        DEBUG    context        :64       validate: fc-[6] address-1: count-1
+2020-04-09 12:48:40,262 Thread-1        DEBUG    context        :90       setValues[6] 1:1
+2020-04-09 12:48:40,262 Thread-1        DEBUG    context        :78       getValues fc-[6] address-1: count-1
+2020-04-09 12:48:40,263 Thread-1        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 0]- b'000200000006000600000000'
+2020-04-09 12:48:40,263 MainThread      DEBUG    transaction    :304      Changing transaction state from 'WAITING FOR REPLY' to 'PROCESSING REPLY'
+2020-04-09 12:48:40,264 MainThread      DEBUG    transaction    :233      RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 12:48:40,264 MainThread      DEBUG    socket_framer  :147      Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 12:48:40,264 MainThread      DEBUG    factory        :266      Factory Response[WriteSingleRegisterResponse: 6]
+2020-04-09 12:48:40,265 MainThread      DEBUG    transaction    :383      Adding transaction 2
+2020-04-09 12:48:40,265 MainThread      DEBUG    transaction    :394      Getting transaction 2
+2020-04-09 12:48:40,265 MainThread      DEBUG    transaction    :193      Changing transaction state from 'PROCESSING REPLY' to 'TRANSACTION_COMPLETE'

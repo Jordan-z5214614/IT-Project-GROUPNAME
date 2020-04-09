@@ -1,0 +1,6 @@
+[plc list]
+plc1 = plc1.local
+
+[plc1]
+username = pi
+password = raspberry
