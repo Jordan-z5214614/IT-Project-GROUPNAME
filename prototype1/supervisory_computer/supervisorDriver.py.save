@@ -32,11 +32,13 @@ def plc_start(hostname,username,password):
 
     return(plc_config)
 
-#For each PLC listed in the supevisor config file, calls plc_start on each and saves the PLCs individual config data in plc_list. 
-#The config data saved is PLC Modbus Address, and the assosiated parameters and their respective modbus register addresses. 
-#The format is dict<String name, dict<String address, dict<String Parameter Name, Int Register Number>>>
+#For each PLC listed in the supevisor config file calls start_plc and loads the PLCs config into a temp config object.
+#It loads the PLCs address and it's individual paramater dict, which contains the names and modbus register addresses for each parameter,
+#and stores it in the plc_list in the format <String address, dict param_list<String name, int Address>>
+#Note, it will ONLY load PLCs specified in teh supevisor config file
 def load_plcs():
 
+    #Initialise a PLC list
     plc_list = {}
 
     #Read in supevisor config file
@@ -44,30 +46,28 @@ def load_plcs():
     file = r'config.txt'
     config.read(file)
 
-    #Iterates the PLCs listed in the supevisor config file
+    #Iterate for each PLC specified in the supevisor config file
     for plc in config.items('plc list'):
 
-        print("Connecting to" + plc[0], end='')
-        #Loads PLC login creds. #TODO configure to use SSH Keys instead
+        #Loads credentials for PLC 
+        #TODO confgiure to use keys instead of plaintext logins
         username = config.get(plc[0],'username')
         password = config.get(plc[0],'password')
         hostname = plc[1]
 
-        #Setup configparser object to store PLC config data
+        #Set up a temp configparser to store PLC config data
         plc_config = configparser.RawConfigParser()
 
-        #Call plc_start and save config data
+        #Call plc_start and store returned config data in plc_config object
         plc_config.read_string(plc_start(hostname,username,password))
 
+        #Init a parameter list
         param_list = {}
 
-        #Save parameter list in PLCs config file
+ 
         param_list.update(plc_config.items('parameter addresses'))
+        plc_list.update({plc_config.get('address','address'):param_list})
 
-        #Store PLC address and parameter list in plc_list
-        plc_list.update({plc[0]:{plc_config.get('address','address'):param_list}})
-
-        print("Done!")
     return(plc_list)
 
 #Starts a server in a thread, then takes a PWM value from the user. 
@@ -76,13 +76,9 @@ def main():
     server = Process(target=modbusServer.run_server)
 
     try:
-        print("Starting Modbus Server...", end='')
         server.start()
-        print("Done!")
 
-        ("Starting PLCs...")
         plc_list = load_plcs()
-        print(plc_list)
 
         client = ModbusClient('supevisor',5020)
         client.connect()
