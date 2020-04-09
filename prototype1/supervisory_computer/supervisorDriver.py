@@ -82,7 +82,6 @@ def main():
 
         ("Starting PLCs...")
         plc_list = load_plcs()
-        print(plc_list)
 
         client = ModbusClient('supevisor',5020)
         client.connect()
