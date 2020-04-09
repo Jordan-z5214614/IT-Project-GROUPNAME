@@ -11,7 +11,7 @@ def load_config():
 
     #Read the config file into config object
     config = configparser.RawConfigParser()
-    file = r'config.txt'
+    file = r'IT-Project-GROUPNAME/prototype1/PLC/config.txt'
     config.read(file)
 
     return(config)
