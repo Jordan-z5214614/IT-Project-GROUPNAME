@@ -47,7 +47,7 @@ def load_plcs():
     #Iterates the PLCs listed in the supevisor config file
     for plc in config.items('plc list'):
 
-        print("Connecting to" + plc[0] + "... ", end='')
+        print("Connecting to " + plc[0] + "... ", end='')
         #Loads PLC login creds. #TODO configure to use SSH Keys instead
         username = config.get(plc[0],'username')
         password = config.get(plc[0],'password')
