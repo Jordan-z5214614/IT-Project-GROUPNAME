@@ -22377,3 +22377,90 @@
 2020-04-09 15:20:44,828 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
 2020-04-09 15:20:44,828 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
 2020-04-09 15:20:44,828 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0002000000050003020000'
+2020-04-09 15:23:02,699 Thread-1        DEBUG    transport      :1819     starting thread (client mode): 0xb5b33bd0
+2020-04-09 15:23:02,699 Thread-1        DEBUG    transport      :1819     Local version/idstring: SSH-2.0-paramiko_2.7.1
+2020-04-09 15:23:02,745 Thread-1        DEBUG    transport      :1819     Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u2
+2020-04-09 15:23:02,745 Thread-1        INFO     transport      :1819     Connected (version 2.0, client OpenSSH_7.9p1)
+2020-04-09 15:23:02,753 Thread-1        DEBUG    transport      :1819     kex algos:['curve25519-sha256', 'curve25519-sha256@libssh.org', 'ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group16-sha512', 'diffie-hellman-group18-sha512', 'diffie-hellman-group14-sha256', 'diffie-hellman-group14-sha1'] server key:['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa', 'ecdsa-sha2-nistp256', 'ssh-ed25519'] client encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] server encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] client mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] server mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2020-04-09 15:23:02,753 Thread-1        DEBUG    transport      :1819     Kex agreed: curve25519-sha256@libssh.org
+2020-04-09 15:23:02,753 Thread-1        DEBUG    transport      :1819     HostKey agreed: ecdsa-sha2-nistp256
+2020-04-09 15:23:02,754 Thread-1        DEBUG    transport      :1819     Cipher agreed: aes128-ctr
+2020-04-09 15:23:02,754 Thread-1        DEBUG    transport      :1819     MAC agreed: hmac-sha2-256
+2020-04-09 15:23:02,754 Thread-1        DEBUG    transport      :1819     Compression agreed: none
+2020-04-09 15:23:02,796 Thread-1        DEBUG    transport      :1819     kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2020-04-09 15:23:02,797 Thread-1        DEBUG    transport      :1819     Switch to new keys ...
+2020-04-09 15:23:02,846 Thread-1        DEBUG    transport      :1819     userauth is OK
+2020-04-09 15:23:02,956 Thread-1        INFO     transport      :1819     Authentication (password) successful!
+2020-04-09 15:23:02,957 MainThread      DEBUG    channel        :1212     [chan 0] Max packet in: 32768 bytes
+2020-04-09 15:23:03,058 Thread-1        DEBUG    transport      :1819     Received global request "hostkeys-00@openssh.com"
+2020-04-09 15:23:03,058 Thread-1        DEBUG    transport      :1819     Rejecting "hostkeys-00@openssh.com" global request from server.
+2020-04-09 15:23:03,104 Thread-1        DEBUG    channel        :1212     [chan 0] Max packet out: 32768 bytes
+2020-04-09 15:23:03,104 Thread-1        DEBUG    transport      :1819     Secsh channel 0 opened.
+2020-04-09 15:23:03,107 Thread-1        DEBUG    channel        :1212     [chan 0] Sesch channel 0 request ok
+2020-04-09 15:23:03,121 Thread-1        DEBUG    channel        :1212     [chan 0] EOF received (0)
+2020-04-09 15:23:03,121 MainThread      DEBUG    channel        :1212     [chan 1] Max packet in: 32768 bytes
+2020-04-09 15:23:03,122 Thread-1        DEBUG    channel        :1212     [chan 0] EOF sent (0)
+2020-04-09 15:23:03,123 Thread-1        DEBUG    channel        :1212     [chan 1] Max packet out: 32768 bytes
+2020-04-09 15:23:03,123 Thread-1        DEBUG    transport      :1819     Secsh channel 1 opened.
+2020-04-09 15:23:03,168 Thread-1        DEBUG    channel        :1212     [chan 1] Sesch channel 1 request ok
+2020-04-09 15:23:03,169 MainThread      DEBUG    channel        :1212     [chan 1] EOF sent (1)
+2020-04-09 15:23:03,171 MainThread      DEBUG    sync           :347      Started thread to serve client at ('127.0.0.1', 60069)
+2020-04-09 15:23:03,172 Thread-1        DEBUG    sync           :46       Client Connected [127.0.0.1:60069]
+2020-04-09 15:23:03,269 Thread-1        DEBUG    transport      :1819     EOF in transport thread
+2020-04-09 15:23:03,557 MainThread      DEBUG    sync           :347      Started thread to serve client at ('192.168.1.105', 53339)
+2020-04-09 15:23:03,558 Thread-2        DEBUG    sync           :46       Client Connected [192.168.1.105:53339]
+2020-04-09 15:23:03,558 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 15:23:03,558 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x0 0x0 0x0 0x0
+2020-04-09 15:23:03,559 Thread-2        DEBUG    factory        :137      Factory Request[WriteSingleRegisterRequest: 6]
+2020-04-09 15:23:03,559 Thread-2        DEBUG    context        :64       validate: fc-[6] address-1: count-1
+2020-04-09 15:23:03,559 Thread-2        DEBUG    context        :90       setValues[6] 1:1
+2020-04-09 15:23:03,559 Thread-2        DEBUG    context        :78       getValues fc-[6] address-1: count-1
+2020-04-09 15:23:03,559 Thread-2        DEBUG    sync           :229      send: [WriteRegisterResponse 0 => 0]- b'000100000006000600000000'
+2020-04-09 15:23:04,061 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:04,061 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:04,062 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:04,062 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:04,063 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:04,063 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0002000000050003020000'
+2020-04-09 15:23:04,571 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:04,572 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:04,572 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:04,572 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:04,573 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:04,573 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0003000000050003020000'
+2020-04-09 15:23:05,078 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:05,078 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:05,079 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:05,079 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:05,079 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:05,080 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0004000000050003020000'
+2020-04-09 15:23:05,585 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:05,585 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:05,586 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:05,586 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:05,586 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:05,587 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0005000000050003020000'
+2020-04-09 15:23:06,092 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:06,092 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:06,092 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:06,093 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:06,093 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:06,093 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0006000000050003020000'
+2020-04-09 15:23:06,598 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:06,599 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:06,599 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:06,599 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:06,600 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:06,600 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0007000000050003020000'
+2020-04-09 15:23:07,105 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:07,106 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:07,106 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:07,106 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:07,107 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:07,107 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0008000000050003020000'
+2020-04-09 15:23:07,612 Thread-2        DEBUG    sync           :199      Handling data: 0x0 0x9 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:07,613 Thread-2        DEBUG    socket_framer  :147      Processing: 0x0 0x9 0x0 0x0 0x0 0x6 0x0 0x3 0x0 0x0 0x0 0x1
+2020-04-09 15:23:07,613 Thread-2        DEBUG    factory        :137      Factory Request[ReadHoldingRegistersRequest: 3]
+2020-04-09 15:23:07,613 Thread-2        DEBUG    context        :64       validate: fc-[3] address-1: count-1
+2020-04-09 15:23:07,614 Thread-2        DEBUG    context        :78       getValues fc-[3] address-1: count-1
+2020-04-09 15:23:07,614 Thread-2        DEBUG    sync           :229      send: [ReadRegisterResponse (1)]- b'0009000000050003020000'
