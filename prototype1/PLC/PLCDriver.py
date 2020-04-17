@@ -4,14 +4,14 @@ import configparser
 import importlib
 import time
 import PLCLogic
-
+import logicTest
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 
 def load_config():
 
     #Read the config file into config object
     config = configparser.RawConfigParser()
-    file = r'IT-Project-GROUPNAME/prototype1/PLC/config.txt'
+    file = r'/home/pi/IT-Project-GROUPNAME/prototype1/PLC/config.txt'
     config.read(file)
 
     return(config)
