@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#TODO Flesh out user inputs. Configure to take registers/addresses from a config file
 
 #Import modbus protocol 
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
@@ -11,6 +10,8 @@ import paramiko
 import configparser
 import sys
 import time
+
+import supervisorInterface
 
 #Connects to the targeted PLC, retrieves the config file and then starts the PLCDriver process on that device
 def plc_start(hostname,username,password):
@@ -41,7 +42,7 @@ def load_plcs():
 
     #Read in supevisor config file
     config = configparser.RawConfigParser()
-    file = r'config.txt'
+    file = r'/home/pi/IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt'
     config.read(file)
 
     #Iterates the PLCs listed in the supevisor config file
@@ -80,15 +81,15 @@ def main():
         server.start()
         print("Done!")
 
-        ("Starting PLCs...")
+        print("Starting PLCs...", end='')
         plc_list = load_plcs()
+        print("Done!")
 
+        print("Starting user interface...")
         client = ModbusClient('supevisor',5020)
         client.connect()
 
-        while True:
-            pwm = input("Enter PWM: ")
-            client.write_register(0,int(pwm),unit=0) #register address and device address are hard coded for testing. Will be dynamic from config file in end product
+        interface = supervisorInterface.supervisorInterface(plc_list,client)
 
     except KeyboardInterrupt:
         print("\nShutting down")

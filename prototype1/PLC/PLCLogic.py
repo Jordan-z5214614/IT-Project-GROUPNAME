@@ -12,5 +12,5 @@ def main(device_list,param_list,writeModbus,readModbus):
                 device_list.get('dev0').setPwm(1,1)
             else:
                 device_list.get('dev0').setPwm(1,0)
-    except KeyboardInterrupt:
+    except:
         device_list.get('dev0').setPwm(1,0)
