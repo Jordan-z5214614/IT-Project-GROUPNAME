@@ -89,10 +89,17 @@ def run_server():
     #     store = ModbusSlaveContext(..., zero_mode=True)
     # ----------------------------------------------------------------------- #
     store = ModbusSlaveContext(
+<<<<<<< HEAD
         di=ModbusSequentialDataBlock(0, [0]*100),
         co=ModbusSequentialDataBlock(0, [0]*100),
         hr=ModbusSequentialDataBlock(0, [0]*100),
         ir=ModbusSequentialDataBlock(0, [0]*100))
+=======
+        di=ModbusSequentialDataBlock(0, [17]*100),
+        co=ModbusSequentialDataBlock(0, [17]*100),
+        hr=ModbusSequentialDataBlock(0, [17]*100),
+        ir=ModbusSequentialDataBlock(0, [17]*100))
+>>>>>>> 742fa5c1f636b0facc69bb265a92c51d5738ba3e
 
     context = ModbusServerContext(slaves=store, single=True)
 
