@@ -12,9 +12,10 @@ class Turbine:
         return(self.RPM,self.power,self.target,self.mode)
     def setRPM(self, rpm):
         self.RPM=rpm
+    def setPower(self, power):
+        self.power=power
     def update(self):
         self.RPMVal.setText(str(self.RPM))
-        self.power=(int((self.RPM/450)*100))
         self.powerOut.setValue(self.power)
         self.targetVal.setText(str(self.target))
         self.targetSlide.setValue(self.target)
@@ -66,7 +67,7 @@ class Turbine:
         self.powerLabel = Q.QLabel(paramDisp)
         self.powerLabel.setText("Power Output:")
         self.powerOut = Q.QProgressBar()
-        self.powerOut.setRange(0,100)
+        self.powerOut.setRange(0,1000)
         self.powerOut.setValue(self.power)
         self.targetLabel = Q.QLabel(paramDisp)
         self.targetLabel.setText("Target RPM:")

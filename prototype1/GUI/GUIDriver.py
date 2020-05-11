@@ -10,7 +10,7 @@ from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 class HandlerSignals(Qt.QObject):
     rpm = Qt.pyqtSignal(int)
     update = Qt.pyqtSignal()
-
+    power = Qt.pyqtSignal(int)
 class ModbusHandler(Qt.QThread):
     IP='111.220.27.216'
     USER='pi'
@@ -28,7 +28,8 @@ class ModbusHandler(Qt.QThread):
         while True:
             data = self.turbine1.getValues()
             self.writeModbus(data)
-            self.signals.rpm.emit(self.readModbus())
+            self.signals.rpm.emit(self.readModbus(2))
+            self.signals.power.emit(self.readModbus(1))
             self.signals.update.emit()
             time.sleep(0.1)
 
@@ -37,9 +38,9 @@ class ModbusHandler(Qt.QThread):
         target=data[2]
         self.client.write_register(0,target,unit=0x00)
 
-    def readModbus(self):
+    def readModbus(self,register):
 
-        registers = self.client.read_holding_registers(2,unit=0x00)
+        registers = self.client.read_holding_registers(register,unit=0x00)
         return(registers.registers[0])
 
     def startSupervisor(self):
@@ -63,6 +64,7 @@ class GUI:
         self.threadpool = Qt.QThreadPool()
         handler = ModbusHandler(self.turbine1,self.turbine2)
         handler.signals.rpm.connect(self.turbine1.setRPM)
+        handler.signals.power.connect(self.turbine1.setPower)
         handler.signals.update.connect(self.turbine1.update)
         handler.start()
         self.window.show()
