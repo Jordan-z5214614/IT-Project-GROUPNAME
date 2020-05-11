@@ -2,10 +2,68 @@
 
 import PyQt5.QtWidgets as Q
 import PyQt5.QtCore as Qt
+import Turbine
+import paramiko
+import time
+import multiprocessing
+from pymodbus.client.sync import ModbusTcpClient as ModbusClient
+
+class ModbusHandler(Qt.QThread):
+    IP='192.168.1.104'
+    USER='pi'
+    PWD='gr0upn@m3'
+
+    def __init__(self,turbine1,turbine2):
+        super(ModbusHandler, self).__init__()
+        self.turbine1 = turbine1
+        self.turbine2 = turbine2
+
+        self.startSupervisor()
+        self.startModbusClient()
+    @Qt.pyqtSlot()
+    def run(self):
+        while True:
+            data = self.turbine1.getValues()
+            self.writeModbus(data)
+            self.turbine1.RPM = self.readModbus()
+            self.turbine1.update()
+
+    def writeModbus(self,data):
+
+        target=data[2]
+        self.client.write_register(0,target,unit=0x00)
+
+    def readModbus(self):
+
+        registers = self.client.read_holding_registers(2,unit=0x00)
+        return(registers.registers[0])
+
+    def startSupervisor(self):
+        ssh = paramiko.SSHClient()
+        ssh.load_system_host_keys()
+        ssh.connect(self.IP,username=self.USER,password=self.PWD)
+
+        ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
+        time.sleep(5)
+
+        ssh.close()
+
+    def startModbusClient(self):
+        self.client = ModbusClient(self.IP,5020)
+        self.client.connect()
 class GUI:
 
+    
     def __init__(self):
-
+        self.buildGUI()
+        self.threadpool = Qt.QThreadPool()
+        handler = ModbusHandler(self.turbine1,self.turbine2)
+        handler.start()
+        self.window.show()
+        self.app.exec_()
+        handler.writeModbus([0,0,0,0,0])
+        handler.terminate()
+    def buildGUI(self):
         self.app = Q.QApplication([])
         self.window = Q.QWidget()
 
@@ -16,115 +74,16 @@ class GUI:
 
         self.window.setLayout(layout)
 
-        print(self.turbine1.getValues()) 
     def createSupervisorBox(self,number):
         self.supervisorBox = Q.QGroupBox("Supervisory Computer " + number)
 
         layout = Q.QGridLayout()
-        self.turbine1 = Turbine()
+        self.turbine1 = Turbine.Turbine()
         layout.addWidget(self.turbine1.createTurbineBox("1"),0,0)
-        self.turbine2 = Turbine()
+        self.turbine2 = Turbine.Turbine()
         layout.addWidget(self.turbine2.createTurbineBox("2"),0,1)
 
         self.supervisorBox.setLayout(layout)
-class Turbine:
 
-    RPM = 0
-    power = 0
-    target = 0
-    mode = 0
-    hold = 0
-    def getValues(self):
-        return(self.RPM,self.power,self.target,self.mode)
-    def update(self):
-        self.RPMVal.setText(str(self.RPM))
-        self.powerOut.setValue(int(self.power/350)*100)
-        self.targetVal.setText(str(self.target))
-        self.targetSlide.setValue(self.target)
-    def enableAuto(self):
-        self.mode=0
-        self.targetSlide.setEnabled(False)
-        self.update()
-    def enableManual(self):
-        self.mode=1
-        self.targetSlide.setEnabled(True)
-        self.update()
-    def setTarget(self):
-        self.target=self.targetSlide.value()
-        self.update()
-    def startTurbine(self):
-        self.target=self.hold
-        self.startButton.setEnabled(False)
-        self.stopButton.setEnabled(True)
-        self.update()
-    def stopTurbine(self):
-        self.hold=self.target
-        self.target=0
-        self.stopButton.setEnabled(False)
-        self.startButton.setEnabled(True)
-        self.update()
-    def createTurbineBox(self,number):
-
-        turbineBox = Q.QGroupBox("Turbine " + number)
-
-        modeSelect = Q.QGroupBox("Mode:")
-        autoRadioButton = Q.QRadioButton("Auto")
-        autoRadioButton.setChecked(True)
-        autoRadioButton.toggled.connect(self.enableAuto)
-        manRadioButton = Q.QRadioButton("Manual")
-        manRadioButton.toggled.connect(self.enableManual)
-
-        modeLayout = Q.QHBoxLayout()
-        modeLayout.addWidget(autoRadioButton)
-        modeLayout.addWidget(manRadioButton)
-        modeSelect.setLayout(modeLayout)
-
-        paramDisp = Q.QGroupBox()
-        paramLayout = Q.QGridLayout()
-
-        self.RPMLabel = Q.QLabel(paramDisp)
-        self.RPMLabel.setText("RPM:")
-        self.RPMVal = Q.QLabel(paramDisp)
-        self.RPMVal.setText(str(self.RPM))
-        self.powerLabel = Q.QLabel(paramDisp)
-        self.powerLabel.setText("Power Output:")
-        self.powerOut = Q.QProgressBar()
-        self.powerOut.setRange(0,100)
-        self.powerOut.setValue(self.power)
-        self.targetLabel = Q.QLabel(paramDisp)
-        self.targetLabel.setText("Target RPM:")
-        self.targetVal = Q.QLabel(paramDisp)
-        self.targetVal.setText(str(self.target))
-        self.targetSlide = Q.QSlider(Qt.Qt.Horizontal,paramDisp)
-        self.targetSlide.setValue(self.target)
-        self.targetSlide.setMaximum(350)
-        self.targetSlide.setEnabled(False)
-        self.targetSlide.valueChanged.connect(self.setTarget)
-        self.startButton = Q.QPushButton("START")
-        self.startButton.setEnabled(False)
-        self.startButton.clicked.connect(self.startTurbine)
-        self.stopButton = Q.QPushButton("STOP")
-        self.stopButton.clicked.connect(self.stopTurbine)
-        paramLayout = Q.QGridLayout()
-        paramLayout.addWidget(self.RPMLabel, 0,0,1,1)
-        paramLayout.addWidget(self.RPMVal, 0,4,1,1)
-        paramLayout.addWidget(self.powerLabel, 1,0,1,1)
-        paramLayout.addWidget(self.powerOut, 2,0,1,-1)
-        paramLayout.addWidget(self.targetLabel, 3,0,1,1)
-        paramLayout.addWidget(self.targetVal, 3,4,1,1)
-        paramLayout.addWidget(self.targetSlide, 4,0,1,-1)
-        paramLayout.addWidget(self.startButton, 5,0,2,2)
-        paramLayout.addWidget(self.stopButton, 5,3,2,2)
-
-        paramDisp.setLayout(paramLayout)
-
-        layout = Q.QGridLayout()
-        layout.addWidget(modeSelect,0,0,1,5)
-        layout.addWidget(paramDisp,1,0,6,5)
-        turbineBox.setLayout(layout)
-
-        return(turbineBox)
 if __name__=='__main__':
     gui = GUI()
-    gui.window.show()
-    gui.app.exec_()
