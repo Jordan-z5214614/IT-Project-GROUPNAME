@@ -7,9 +7,12 @@ import paramiko
 import time
 import multiprocessing
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
+class HandlerSignals(Qt.QObject):
+    rpm = Qt.pyqtSignal(int)
+    update = Qt.pyqtSignal()
 
 class ModbusHandler(Qt.QThread):
-    IP='192.168.1.104'
+    IP='111.220.27.216'
     USER='pi'
     PWD='gr0upn@m3'
 
@@ -17,7 +20,7 @@ class ModbusHandler(Qt.QThread):
         super(ModbusHandler, self).__init__()
         self.turbine1 = turbine1
         self.turbine2 = turbine2
-
+        self.signals = HandlerSignals()
         self.startSupervisor()
         self.startModbusClient()
     @Qt.pyqtSlot()
@@ -25,8 +28,9 @@ class ModbusHandler(Qt.QThread):
         while True:
             data = self.turbine1.getValues()
             self.writeModbus(data)
-            self.turbine1.RPM = self.readModbus()
-            self.turbine1.update()
+            self.signals.rpm.emit(self.readModbus())
+            self.signals.update.emit()
+            time.sleep(0.1)
 
     def writeModbus(self,data):
 
@@ -58,6 +62,8 @@ class GUI:
         self.buildGUI()
         self.threadpool = Qt.QThreadPool()
         handler = ModbusHandler(self.turbine1,self.turbine2)
+        handler.signals.rpm.connect(self.turbine1.setRPM)
+        handler.signals.update.connect(self.turbine1.update)
         handler.start()
         self.window.show()
         self.app.exec_()
