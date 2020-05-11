@@ -10,9 +10,11 @@ class Turbine:
     hold = 0
     def getValues(self):
         return(self.RPM,self.power,self.target,self.mode)
+    def setRPM(self, rpm):
+        self.RPM=rpm
     def update(self):
         self.RPMVal.setText(str(self.RPM))
-        self.power=((self.RPM/350)*100)
+        self.power=(int((self.RPM/450)*100))
         self.powerOut.setValue(self.power)
         self.targetVal.setText(str(self.target))
         self.targetSlide.setValue(self.target)
@@ -34,7 +36,7 @@ class Turbine:
         self.update()
     def stopTurbine(self):
         self.hold=self.target
-        self.target=0
+        self.target=1
         self.stopButton.setEnabled(False)
         self.startButton.setEnabled(True)
         self.update()
@@ -72,7 +74,8 @@ class Turbine:
         self.targetVal.setText(str(self.target))
         self.targetSlide = Q.QSlider(Qt.Qt.Horizontal,paramDisp)
         self.targetSlide.setValue(self.target)
-        self.targetSlide.setMaximum(350)
+        self.targetSlide.setMaximum(400)
+        self.targetSlide.setMinimum(0)
         self.targetSlide.setEnabled(False)
         self.targetSlide.valueChanged.connect(self.setTarget)
         self.startButton = Q.QPushButton("START")
