@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
 import PyQt5
 from PyQt5 import QtWidgets, uic
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 import sqlite3
 import sys
-
+import hashlib
 
 
 class Ui(QtWidgets.QMainWindow):
@@ -38,14 +39,18 @@ class Ui(QtWidgets.QMainWindow):
             print("Found!")
 
         else:
-            _init_(self)
+            self.failedLogin()
         
-        print(username)
-        print(password)
+        #print(username)
+        #print(password)
 
+    def failedLogin(self):
+        return(0)
     def exitProcess(self):
-        self.destroy()
+        sys.exit()
 
-app = QtWidgets.QApplication(sys.argv)
-window = Ui()
-app.exec_()
+if __name__=="__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = Ui()
+    app.exec_()
+    sys.exit()
