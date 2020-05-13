@@ -36,7 +36,7 @@ class Ui(QtWidgets.QMainWindow):
         c.execute("SELECT * FROM LOGIN WHERE username='"+username+"' and password='"+hashP+"'")
 
         if c.fetchone():
-            print("Found!")
+            self.successfulLogin()
 
         else:
             self.failedLogin()
@@ -44,6 +44,8 @@ class Ui(QtWidgets.QMainWindow):
         #print(username)
         #print(password)
 
+    def successfulLogin(self):
+        self.close()
     def failedLogin(self):
         return(0)
     def exitProcess(self):

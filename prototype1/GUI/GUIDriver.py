@@ -2,7 +2,9 @@
 
 import PyQt5.QtWidgets as Q
 import PyQt5.QtCore as Qt
+import TurbineLogin
 import Turbine
+import sys
 import paramiko
 import time
 import multiprocessing
@@ -94,4 +96,7 @@ class GUI:
         self.supervisorBox.setLayout(layout)
 
 if __name__=='__main__':
+    login = Q.QApplication(sys.argv)
+    window = TurbineLogin.Ui()
+    login.exec_()
     gui = GUI()
