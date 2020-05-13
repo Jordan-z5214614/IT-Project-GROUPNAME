@@ -33,7 +33,7 @@ class ModbusHandler(Qt.QThread):
             self.signals.rpm.emit(self.readModbus(2))
             self.signals.power.emit(self.readModbus(1))
             self.signals.update.emit()
-            time.sleep(0.1)
+            time.sleep(0.01)
 
     def writeModbus(self,data):
 
