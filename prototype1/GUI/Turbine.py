@@ -65,7 +65,7 @@ class Turbine:
         self.RPMVal = Q.QLabel(paramDisp)
         self.RPMVal.setText(str(self.RPM))
         self.powerLabel = Q.QLabel(paramDisp)
-        self.powerLabel.setText("Power Output:")
+        self.powerLabel.setText("Steam Pressure:")
         self.powerOut = Q.QProgressBar()
         self.powerOut.setRange(0,1000)
         self.powerOut.setValue(self.power)
