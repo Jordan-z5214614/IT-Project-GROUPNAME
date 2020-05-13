@@ -89,7 +89,7 @@ def main():
         client = ModbusClient('supevisor',5020)
         client.connect()
 
-        interface = supervisorInterface.supervisorInterface(plc_list,client)
+        #interface = supervisorInterface.supervisorInterface(plc_list,client)
 
 
     except KeyboardInterrupt:
