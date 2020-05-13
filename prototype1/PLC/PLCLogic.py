@@ -10,7 +10,7 @@ def main(device_list,param_list,writeModbus,readModbus):
         motor = device_list.get('dev0')
         sens = device_list.get('dev1')
         while True:
-            time.sleep(0.0000001)
+            #time.sleep(0.1)
             targetRPM = readModbus(int(param_list.get('targetrpm')))
             RPM = sens.getRPM()
             if (targetRPM == 0):

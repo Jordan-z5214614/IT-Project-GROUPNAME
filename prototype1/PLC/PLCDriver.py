@@ -61,7 +61,7 @@ def readModbus(register):
 def main():
 
     PLCLogic.main(device_list, param_list, writeModbus, readModbus)
-
+    #logicTest.main()
 
 if __name__ == "__main__":
     main()
