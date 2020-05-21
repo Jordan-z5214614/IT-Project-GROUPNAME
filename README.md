@@ -32,11 +32,14 @@ This project expands upon a prototype platform for teaching the hacking of cyber
  - mouse 
  - keyboard
  - Laptop or PC with SD card port
- - Raspberry Pi Hats
- - motor
+ - Raspberry Pi HATs
+(We used the HAT's from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
+ - lego motor 
+(We used the motor from the LEGO® Power Functions medium motor and 2 19.6” (50cm) extension wires, officially titled as the "LEGO® Power Functions M-Motor". This can be brought from the following link: https://www.lego.com/en-us/product/lego-power-functions-m-motor-8883)
  - sensor
  - turbine piece
- - Lego (optional please view the Lego Design folder for more details)
+ - appropriate connectors and pieces (see diagram below for full picture)
+ - Lego power plant station (optional please view the Lego Design folder for more details)
  
  
  
