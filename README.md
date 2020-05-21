@@ -24,17 +24,22 @@ This project expands upon a prototype platform for teaching the hacking of cyber
 
 [For a full guide see our WIKI](https://github.com/Mikaela199/IT-Project-2/wiki)
 
+
+
+
 # System Components:
 
-## GUI
+- GUI:
 The GUI will provide course conveners the means to easily deploy, configure, observe and maintain the CPS scenarios of the system.
-## ICS Components
-### Modbus emulator
+- Modbus emulator:
 Node red will be utilised as the main platform for building the ICS components, utlising the Modbus package and various flows to emulate complex CPS components. This will all be run from a set of raspberry pi in a client server relationship.
-### Historian
+- Historian:
 A SQL server will be configured in a vulnerable manner to provide an attack path for the system
-### Hardware
+- Hardware:
 A detailed physical system that takes inputs from the emulated system to provide visual and kinetic effects in a scale model. Utilising the GPIO pins on the Raspberry Pi to communicate with Adafruit Neopixel LED strips and DC motors using the Adafruit motor control hat.
+
+
+
 
 
 # QuickStart
