@@ -14,7 +14,7 @@ Alternatively you can view the pictures for the high and low cost designs and re
 
 # Low Cost Version LEGO set
 
-Link to the low cost version "Low-Cost-Power-Plant.lxf": 
+Link to the low cost version "Low-Cost-Power-Plant.lxf" is as follows: 
 https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/Low-Cost-Power-Plant.lxf
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/Low-Cost-Picture1.png)
@@ -25,7 +25,7 @@ https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Desig
 
 # High Cost Version LEGO set
 
-Link to the low cost version "High-Cost-Power-Plant.lxf":
+Link to the low cost version "High-Cost-Power-Plant.lxf" is as follows:
 https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/High-Cost-Power-Plant.lxf
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/High-Cost-Picture1.png)
