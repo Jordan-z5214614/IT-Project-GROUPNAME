@@ -36,7 +36,7 @@ This project expands upon a prototype platform for teaching the hacking of cyber
  - motor
  - sensor
  - turbine piece
- - lego (optional)
+ - Lego (optional please view the Lego Design details for more details)
  
  
  
