@@ -22,7 +22,7 @@ Features supported by this system:
 
 This project expands upon a prototype platform for teaching the hacking of cyber-physical systems (such as power grid devices, traffic lights, and critical infrastructure). The current ICS hacking range in use by UNSW has a running cost too high to facilitate its regular use as a teaching resource, however, it uses the real software and hardware of industrial ICS. UNSW is seeking a more cost-effective solution which does not use the real software or hardware. A previous attempt to create a similar scenario was the construction of a wind power turbine, controlled by ICS. This previous project will be built on. 
 
-[For a full guide see our WIKI](https://github.com/Mikaela199/IT-Project-2/wiki)
+[For a full guide see the past projects WIKI](https://github.com/Mikaela199/IT-Project-2/wiki)
 
 
 
@@ -81,20 +81,7 @@ After the setup has been completed install the requirements listed in the "requi
 https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/requirements.txt
 
 These are also listed below for your convienance:
-* node.js
-* npm
-* node-red
-* node-red-contrib-modbus
-* node-red-dashboard
-* node-red-contrib-aggregator
-* python3
-* python3-dev
-* pip3
-* adafruit-circuitpython-neopixel
-* adafruit-circuitpython-motorkit
-* Docker
 
-[For a full guide see our WIKI](https://github.com/Mikaela199/IT-Project-2/wiki)
 
 
  
