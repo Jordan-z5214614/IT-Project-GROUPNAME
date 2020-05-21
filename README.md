@@ -2,7 +2,7 @@
 
 Developed by: $GROUPNAME
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Logo_Design.PNG)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Logo_Design.png)
 
 # Introduction
 
@@ -34,8 +34,16 @@ This project expands upon a prototype platform for teaching the hacking of cyber
  - Laptop or PC with SD card port
  - Raspberry Pi HATs
 (We used the HAT's from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
+
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat.jpg)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat-in-Use.jpg)
+
  - lego motor 
 (We used the motor from the LEGO® Power Functions medium motor and 2 19.6” (50cm) extension wires, officially titled as the "LEGO® Power Functions M-Motor". This can be brought from the following link: https://www.lego.com/en-us/product/lego-power-functions-m-motor-8883)
+
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor.jpg)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor-in-Use.jpg)
+
  - sensor
  - turbine piece
  - appropriate connectors and pieces (see diagram below for full picture)
