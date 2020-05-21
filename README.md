@@ -8,7 +8,7 @@ Developed by: $GROUPNAME
 
 Aim:
 
-The goal of this project is to make a modular framework for future ICS Scenario building. We also developed a functioning scenario for the ICS controlling a powerplant turbine. We will also be creating a scenario, using this framework, which emulates a turbine from a nuclear power plant. These scenarios aim to educate and facilitate honing Cyber-Security skills in an Industrial Control System (ICS) context.   
+The goal of this project is to make a modular framework for future ICS Scenario building. We have developed a functioning scenario for the ICS controlling a powerplant turbine simulation. We have also created a scenario, using this framework, which emulates a turbine from a nuclear power plant. These scenarios aim to educate and facilitate honing Cyber-Security skills in an Industrial Control System (ICS) context.   
 
 
 History:
