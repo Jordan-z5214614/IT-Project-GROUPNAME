@@ -2,7 +2,7 @@
 
 Developed by: $GROUPNAME
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/LogoDesign.PNG)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Logo_Design.PNG)
 
 # Introduction
 
