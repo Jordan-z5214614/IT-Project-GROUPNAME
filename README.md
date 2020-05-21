@@ -1,4 +1,5 @@
 # Simulated Industrial Control System Hacking Scenario
+### A Cyber-Physical Emulation System for Scenario-Based Training
 
 Developed by: $GROUPNAME
 
