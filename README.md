@@ -36,7 +36,7 @@ Node red will be utilised as the main platform for building the ICS components, 
 - Historian:
 A SQL server will be configured in a vulnerable manner to provide an attack path for the system
 - Hardware:
-A detailed physical system that takes inputs from the emulated system to provide visual and kinetic effects in a scale model. Utilising the GPIO pins on the Raspberry Pi to communicate with Adafruit Neopixel LED strips and DC motors using the Adafruit motor control hat.
+A detailed physical system that takes inputs from the emulated system to provide visual and kinetic effects in a scale model. Utilising the GPIO pins on the Raspberry Pi to communicate with DC motors using the Adafruit motor control hat.
 
 
 
@@ -54,7 +54,7 @@ A detailed physical system that takes inputs from the emulated system to provide
  - keyboard
  - Laptop or PC with SD card port
  - Raspberry Pi HATs
-(We used the HAT's from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
+(We used the Adafruit motor control HATs from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat.JPG)
 
@@ -77,6 +77,21 @@ A detailed physical system that takes inputs from the emulated system to provide
  
 Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
  
-After the setup has been completed
+After the setup has been completed install the requirements listed in the "requirmenets.txt", these are also listed below for your convienance:
+* node.js
+* npm
+* node-red
+* node-red-contrib-modbus
+* node-red-dashboard
+* node-red-contrib-aggregator
+* python3
+* python3-dev
+* pip3
+* adafruit-circuitpython-neopixel
+* adafruit-circuitpython-motorkit
+* Docker
+
+[For a full guide see our WIKI](https://github.com/Mikaela199/IT-Project-2/wiki)
+
 
  
