@@ -1,0 +1,12 @@
+node.js
+npm
+node-red
+node-red-contrib-modbus
+node-red-dashboard
+node-red-contrib-aggregator
+python3
+python3-dev
+pip3
+adafruit-circuitpython-neopixel
+adafruit-circuitpython-motorkit
+Docker
