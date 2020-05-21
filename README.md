@@ -22,11 +22,19 @@ This project expands upon a prototype platform for teaching the hacking of cyber
 #TODO fix physical requirements get more specific (eg. what lego set you brought/or what it comprised of)
  Physical Requirements:
  - Raspberry Pi 4 
+ - Raspberry Pi's HDMI connector
+ - Raspberry Pi's power supply
+ - SD cards containing micro SD card
+ - mouse 
+ - keyboard
+ - Laptop or PC with SD card port
  - Raspberry Pi Hats
  - motor
  - sensor
  - turbine piece
  - lego (optional)
+ 
+ 
  
 Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
  
