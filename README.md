@@ -1,5 +1,5 @@
 # Simulated Industrial Control System Hacking Scenario
-### A Cyber-Physical Emulation System for Scenario-Based Training
+## A Cyber-Physical Emulation System for Scenario-Based Training
 
 Developed by: $GROUPNAME
 
@@ -45,7 +45,7 @@ A detailed physical system that takes inputs from the emulated system to provide
 # QuickStart
 
 
- Physical Requirements:
+ ### Physical Requirements:
  - Raspberry Pi 4 
  - Raspberry Pi's HDMI connector 
  - Raspberry Pi's power supply 
@@ -73,8 +73,8 @@ A detailed physical system that takes inputs from the emulated system to provide
  - appropriate connectors and pieces (see diagram below for full picture)
  - Lego power plant station (optional please view the Lego Design folder for more details)
  
- 
- 
+### Set Up:
+
 Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
  
 After the setup has been completed install the requirements listed in the "requirements.txt" from the link:
