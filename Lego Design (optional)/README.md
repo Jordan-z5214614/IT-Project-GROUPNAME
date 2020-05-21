@@ -8,7 +8,7 @@ https://lego-digital-designer.en.softonic.com/download
 Buying the lego sets can be done using the designs in the files "Low-Cost-Power-Plant.lxf" or the "High-Cost-Power-Plant.lxf" through the official LEGO site:
 https://www.lego.com/en-us/ldd
 
-Alternatively you can view the pictures for the high and low cost designs and recreate or create similar designs using your own lego pieces. 
+Alternatively you can view the pictures for the high and low cost designs and recreate similar designs using your own lego pieces or other resources. 
 
 
 
