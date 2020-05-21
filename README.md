@@ -18,7 +18,15 @@ This project expands upon a prototype platform for teaching the hacking of cyber
 
 # QuickStart
 
+
+#TODO fix physical requirements get more specific (eg. what lego set you brought/or what it comprised of)
  Physical Requirements:
+ - Raspberry Pi 4 
+ - Raspberry Pi Hats
+ - motor
+ - sensor
+ - turbine piece
+ - lego (optional)
  
  Software Requirements:
  
