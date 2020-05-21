@@ -1,4 +1,4 @@
-# Simulated Industrial Control System Hacking
+# Simulated Industrial Control System Hacking Scenario
 
 Developed by: $GROUPNAME
 
