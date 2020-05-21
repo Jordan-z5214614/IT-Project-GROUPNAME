@@ -25,9 +25,9 @@ This project expands upon a prototype platform for teaching the hacking of cyber
 
  Physical Requirements:
  - Raspberry Pi 4 
- - Raspberry Pi's HDMI connector
- - Raspberry Pi's power supply
- - SD cards containing micro SD card
+ - Raspberry Pi's HDMI connector 
+ - Raspberry Pi's power supply 
+ - SD cards containing micro SD card 
  - mouse 
  - keyboard
  - Laptop or PC with SD card port
