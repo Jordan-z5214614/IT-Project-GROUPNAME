@@ -16,9 +16,9 @@ Alternatively you can view the pictures for the high and low cost designs and re
 
 
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/Low-Cost-Picture1.png)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/Low-Cost-Picture1.png)
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/Low-Cost-Picture2.png)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/Low-Cost-Picture2.png)
 
 
 
@@ -26,10 +26,10 @@ Alternatively you can view the pictures for the high and low cost designs and re
 
 
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/High-Cost-Picture1.png)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/High-Cost-Picture1.png)
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/High-Cost-Picture2.png)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/High-Cost-Picture2.png)
 
-![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/High-Cost-Picture3.png)
+![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Lego%20Design%20(optional)/LEGO%20Design%20Pictures/High-Cost-Picture3.png)
 
 
