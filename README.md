@@ -28,5 +28,6 @@ This project expands upon a prototype platform for teaching the hacking of cyber
  - turbine piece
  - lego (optional)
  
- Software Requirements:
+Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
  
+After the setup has been completed
