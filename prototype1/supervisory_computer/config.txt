@@ -1,6 +1,11 @@
 [plc list]
 plc1 = plc1.local
+plc2 = plc2.local
 
 [plc1]
+username = pi
+password = raspberry
+
+[plc2]
 username = pi
 password = raspberry

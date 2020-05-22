@@ -68,7 +68,7 @@ def load_plcs():
         #Store PLC address and parameter list in plc_list
         plc_list.update({plc[0]:{plc_config.get('address','address'):param_list}})
 
-        print("Done!")
+        print(plc_list)
     return(plc_list)
 
 #Starts a server in a thread, then takes a PWM value from the user. 
@@ -86,10 +86,10 @@ def main():
         print("Done!")
 
         print("Starting user interface...")
-        client = ModbusClient('supevisor',5020)
+        client = ModbusClient('supervisor',5020)
         client.connect()
 
-        #interface = supervisorInterface.supervisorInterface(plc_list,client)
+        interface = supervisorInterface.supervisorInterface(plc_list,client)
 
 
     except KeyboardInterrupt:
