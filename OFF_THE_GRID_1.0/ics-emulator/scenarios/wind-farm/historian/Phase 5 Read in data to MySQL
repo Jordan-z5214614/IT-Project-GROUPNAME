@@ -1,8 +1,0 @@
-Phase 5 Read in data from Node-Red to MySQL database
-For IT Project 2, we need to record data from scenarios implemented in Node-Red into MySQL database.
-Thus, Phase 5 is to demonstrate a sample of how to read data into a MySQL database from Node-Red.
-The attached video tutorial shows a perfect example of transferring data from Node-Red to MySQL. 
-The issue you have to pay attention to is to switch the MySQL command from 'SELECT' to 'INSERT' with the auto-match function.
-
-References:
-•	Node-RED and MySQL working together https://www.youtube.com/watch?v=BXAvsBaMJxY
