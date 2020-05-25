@@ -31,12 +31,16 @@ This project expands upon a prototype platform for teaching the hacking of cyber
 
 - GUI:
 The GUI will provide as another attack path for the system. The GUI will give access to be able to change variables of the turbine.
-- Modbus emulator:
-Pymodbus will be utilised as the main platform for building the ICS components. This will all be run from a set of Raspberry Pi's.
 - Database Logger:
 A SQL server will be configured in a vulnerable manner to provide an attack path for the system. This sends alerts to the system of unusual behaviour.
+- Supervisory Computer:
+The supervisory computer is the largest control center of the system and includes the GUI componenet and the Database Logger component.
 - Sensors:
 Virtual sensors will be configured to add another attack vector for the system.
+- PLC's:
+The PLC's are set up to control and communicate to the motor and turbine. 
+- Modbus emulator:
+Pymodbus will be utilised as the main platform for building the ICS components. This will all be run from a set of Raspberry Pi's in a client server relationship.
 - Hardware:
 A detailed physical system that takes inputs from the emulated system to provide visual and kinetic effects in a scale model of a power plants turbine. Utilising the GPIO pins on the Raspberry Pi to communicate with DC motors using the Adafruit motor control hat. 
 
