@@ -48,14 +48,14 @@ A detailed physical system that takes inputs from the emulated system to provide
 
 
  ### Physical Requirements:
- - Raspberry Pi 4 x2+
- - Raspberry Pi's HDMI connector x2+
- - Raspberry Pi's power supply x2+
- - SD cards containing micro SD card x2+
+ - Raspberry Pi 4 x3+
+ - Raspberry Pi's HDMI connector x3+
+ - Raspberry Pi's power supply x3+
+ - SD cards containing micro SD card x3+
  - mouse 
  - keyboard
  - Laptop or PC with SD card port
- - Raspberry Pi HATs x1+
+ - Raspberry Pi HATs x2+
 (We used the Adafruit motor control HATs from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat.JPG)
@@ -70,7 +70,7 @@ A detailed physical system that takes inputs from the emulated system to provide
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor-in-Use.JPG)
 
 
- - turbine piece x2+
+ - turbine pieces x2+
  - appropriate connectors and pieces (see diagram below for full picture)
  - Lego power plant station (optional please view the Lego Design folder for more details)
  
@@ -85,7 +85,7 @@ These are also listed below for your convienance:
 
 
 
-After all the Raspberry Pi's have the requirements installed, 
+After all the Raspberry Pi's have the requirements installed, set up Supervisory and PLC 
 
 
  
