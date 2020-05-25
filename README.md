@@ -73,6 +73,8 @@ A detailed physical system that takes inputs from the emulated system to provide
  - appropriate connectors and pieces (see diagram below for full picture)
  - Lego power plant station (optional please view the Lego Design folder for more details)
  
+If you wish to add to the design e.g. add extra machines or turbines, then extra physical requirments may be needed. Please view the 'Create Your Own' section of the "README.md" file for more information about extending this project. 
+ 
 ### Set Up:
 
 Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
@@ -90,6 +92,6 @@ After all the Raspberry Pi's have the requirements installed, the Raspberry Pi's
 2) On the the last two Rasperry Pi's install all the files in the PLC files on each Raspberry Pi. Then run the Drvier file.
 
 
-
+# Create Your Own:
 
  
