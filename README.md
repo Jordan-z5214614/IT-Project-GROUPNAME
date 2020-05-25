@@ -85,7 +85,12 @@ These are also listed below for your convienance:
 
 
 
-After all the Raspberry Pi's have the requirements installed, set up Supervisory and PLC 
+After all the Raspberry Pi's have the requirements installed, the Raspberry Pi's can be set up. 
+
+1) Install all the files in the Supervisory Computer onto 1 Raspberry Pi. Then run the Driver file.
+2) On the the last two Rasperry Pi's install all the files in the PLC files on each Raspberry Pi. Then run the Drvier file.
+
+
 
 
  
