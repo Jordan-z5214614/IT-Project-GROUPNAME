@@ -48,29 +48,28 @@ A detailed physical system that takes inputs from the emulated system to provide
 
 
  ### Physical Requirements:
- - Raspberry Pi 4 x3<sup>+</sup>
- - Raspberry Pi's HDMI connector x3+
- - Raspberry Pi's power supply x3+
- - SD cards containing micro SD card x3+
+ - Raspberry Pi 4 x3
+ - Raspberry Pi's HDMI connector x3
+ - Raspberry Pi's power supply x3
+ - SD cards containing micro SD card x3
  - mouse 
  - keyboard
  - Laptop or PC with SD card port
- - Raspberry Pi HATs x2+
+ - Raspberry Pi HATs x2
 (We used the Adafruit motor control HATs from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat.JPG)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat-in-Use.JPG)
 
- - lego motor x2+
+ - lego motor x2
 (We used the motor from the LEGO® Power Functions medium motor and 2 19.6” (50cm) extension wires, officially titled as the "LEGO® Power Functions M-Motor". This can be brought from the following link: https://www.lego.com/en-us/product/lego-power-functions-m-motor-8883)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor.JPG)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor-in-Use.JPG)
 
-
- - turbine pieces x2+
+ - turbine pieces x2 #TODO change to be open "can really be anything that connects to the motor
  - appropriate connectors and pieces (see diagram below for full picture)
  - Lego power plant station (optional please view the Lego Design folder for more details)
  
