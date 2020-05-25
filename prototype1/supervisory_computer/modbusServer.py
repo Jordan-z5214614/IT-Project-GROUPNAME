@@ -18,8 +18,8 @@ def run_server():
 
     slaves = {
 
-        0x01: ModbusSlaveContext(),
-        0x02: ModbusSlaveContext()
+        0x01: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10)),
+        0x02: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10))
 
     }
 
