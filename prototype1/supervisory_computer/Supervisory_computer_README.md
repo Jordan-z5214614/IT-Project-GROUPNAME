@@ -1,9 +1,6 @@
 ### Config File
 
-The config file acts as a crucial feature for the setup and deployment of our framework and the current scenario. It allows a user to 
-establish how many PLCs they will be running in the scenario and what the login credentials are for these machines. In our current example
-system there are two PLCs, that each control a turbine. If a user wants to add more PLCs to control more devices, they only have to update 
-the config file to include the additional PLC(s) names and login credentials.
+Each config file, is independent for each device. The config file acts as a crucial feature for the setup and deployment of our framework and the current scenario. It allows a user to establish how many PLCs they will be running in the scenario and what the login credentials are for these machines. In our current example system there are two PLCs, that each control a turbine. If a user wants to add more PLCs to control more devices, they only have to update the config file to include the additional PLC(s) names and login credentials.
 
 
 ### Supervisory Computer
