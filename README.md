@@ -4,7 +4,7 @@
 Developed by: $GROUPNAME
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Logo_Design.png)
-</br>
+
 # Introduction
 This repo will hold the University project 'Off The Grid', A Cyber-Physical Emulation System for Scenario-Based Training. 
 The system will provide a means to run scenarios that emulate Cyber-Physical Systems to be accessed for a small group of students to interact with as attackers. 
@@ -45,12 +45,12 @@ Pymodbus will be utilised as the main platform for building the ICS components. 
 A detailed physical system that takes inputs from the emulated system to provide visual and kinetic effects in a scale model of a power plants turbine. Utilising the GPIO pins on the Raspberry Pi to communicate with DC motors using the Adafruit motor control hat. 
 
 
-</br></br></br>
+</br>
 
 
 # QuickStart
 
-</br></br>
+
  ### Physical Requirements:
  - Raspberry Pi 4 x3
  - Raspberry Pi's HDMI connector x3
@@ -61,18 +61,18 @@ A detailed physical system that takes inputs from the emulated system to provide
  - Laptop or PC with SD card port
  - Raspberry Pi HATs x2</br>
 (We used the Adafruit motor control HATs from the "Adafruit DC & Stepper Motor HAT for Raspberry Pi - Mini Kit". This can be brought from the following link: https://www.adafruit.com/product/2348)
-</br>
+
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat.JPG)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Raspberry-Pi-Hat-in-Use.JPG)
-</br>
+
  - lego motor x2 </br>
 (We used the motor from the LEGO® Power Functions medium motor and 2 19.6” (50cm) extension wires, officially titled as the "LEGO® Power Functions M-Motor". This can be brought from the following link: https://www.lego.com/en-us/product/lego-power-functions-m-motor-8883)
-</br>
+
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor.JPG)
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor-in-Use.JPG)
-</br>
+
  - turbine pieces x2 #TODO change to be open "can really be anything that connects to the motor
  - appropriate connectors and pieces (see diagram below for full picture) #TODO add more infor and get picture of whole system from Luke
  - Lego power plant station (optional please view the Lego Design folder for more details)
