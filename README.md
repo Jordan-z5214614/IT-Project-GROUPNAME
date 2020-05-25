@@ -77,7 +77,7 @@ A detailed physical system that takes inputs from the emulated system to provide
 
 Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
  
-After the setup has been completed install the requirements listed in the "requirements.txt" from the link or from the master:
+After the setup has been completed install the requirements listed in the "requirements.txt" from the master or the link:
 https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/requirements.txt
 
 These are also listed below for your convienance:
