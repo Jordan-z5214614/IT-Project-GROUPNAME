@@ -1,2 +1,4 @@
 pip3
-PyQt5
+PyQt5 == 5.14.2
+pymodbus == 2.3.0
+parakmiko = 2.7.1
