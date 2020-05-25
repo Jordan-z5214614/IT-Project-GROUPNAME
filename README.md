@@ -48,7 +48,7 @@ A detailed physical system that takes inputs from the emulated system to provide
 
 
  ### Physical Requirements:
- - Raspberry Pi 4 x3+
+ - Raspberry Pi 4 x3<sup>+</sup>
  - Raspberry Pi's HDMI connector x3+
  - Raspberry Pi's power supply x3+
  - SD cards containing micro SD card x3+
