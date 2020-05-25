@@ -79,7 +79,9 @@ A detailed physical system that takes inputs from the emulated system to provide
  
 If you wish to add to the design e.g. add extra machines or turbines, then extra physical requirments may be needed. Please view the 'Create Your Own' section of the "README.md" file for more information about extending this project. 
  </br></br>
-### Set Up:
+### Set up Automatically:
+
+### Set Up Manual:
 
 Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
  
