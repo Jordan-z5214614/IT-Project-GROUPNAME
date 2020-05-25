@@ -70,7 +70,7 @@ A detailed physical system that takes inputs from the emulated system to provide
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor-in-Use.JPG)
 
  - turbine pieces x2 #TODO change to be open "can really be anything that connects to the motor
- - appropriate connectors and pieces (see diagram below for full picture)
+ - appropriate connectors and pieces (see diagram below for full picture) #TODO add more infor and get picture of whole system from Luke
  - Lego power plant station (optional please view the Lego Design folder for more details)
  
 If you wish to add to the design e.g. add extra machines or turbines, then extra physical requirments may be needed. Please view the 'Create Your Own' section of the "README.md" file for more information about extending this project. 
@@ -87,6 +87,8 @@ These are also listed below for your convienance:
 
 
 After all the Raspberry Pi's have the requirements installed, the Raspberry Pi's can be set up. 
+
+#TODO talk about configuration files and what needs to be changed or set up in these
 
 1) Install all the files in the Supervisory Computer onto 1 Raspberry Pi. Then run the Driver file.
 2) On the the last two Rasperry Pi's install all the files in the PLC files on each Raspberry Pi. Then run the Drvier file.
