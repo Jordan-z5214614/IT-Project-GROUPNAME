@@ -97,6 +97,10 @@ After all the Raspberry Pi's have the requirements installed, the Raspberry Pi's
 1) Install all the files in the Supervisory Computer onto 1 Raspberry Pi. Then run the Driver file.
 2) On the the last two Rasperry Pi's install all the files in the PLC files on each Raspberry Pi. Then run the Drvier file.
 
+## Testing and Red Team Examples:
+If you wish to try out some testing of the system and attack vectors, please view the 'Red Team Demonstrations and Tutorials' file or click the linke below:
+https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/tree/master/prototype1/Red%20Team%20Demonstrations%20%26%20Tutorials
+
 
 # Create Your Own:
 
