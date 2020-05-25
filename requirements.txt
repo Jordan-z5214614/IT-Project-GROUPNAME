@@ -1,4 +1,8 @@
+# non version specific
 pip3
+multiprocessing
+
+# version specific
 PyQt5 == 5.14.2
 pymodbus == 2.3.0
 parakmiko = 2.7.1
