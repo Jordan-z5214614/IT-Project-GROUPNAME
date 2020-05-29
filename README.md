@@ -81,20 +81,45 @@ If you wish to add to the design e.g. add extra machines or turbines, then extra
  </br></br>
 ### Set up Automatically:
 
-### Set Up Manual:
+### Set Up Manually:
 
-Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4 
+#### Hardware
+
+Use the "HOW TO SET UP RASPBERRY PI'S" document for the initial set up your Raspberry Pi's or follow the tutorial on https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4
+
+We reccomend setting up the Pi using SSH. In order to enable SSH on the Pi you will have to ad a blank file called "ssh" into the root directory of each Pi. 
+
+Each Pi unit can be configured as a different SCADA device during the later setup. At this stage set the hostname as something meaningful for each device. 
+
+#### Software
+
+After the Pi has been set up and the hostname has been set, clone this github into the home directory. Note that you may have to install git onto each Pi. 
  
 After the setup has been completed install the requirements listed in the "requirements.txt" from the master or the link:
 https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/requirements.txt
 
-These are also listed below for your convienance:
+These are also listed below for your convinence:
 
-
+#TODO insert requirements
 
 After all the Raspberry Pi's have the requirements installed, the Raspberry Pi's can be set up. 
 
-#TODO talk about configuration files and what needs to be changed or set up in these
+There are two main device types that can be set up:
+
+1) The higher level Supervisor device
+2) The low level Programmable Logic Controller(s) (PLC)
+
+In the current iteration, the Server service for the Modbus is hosted on the supevisor device. If your setup will not use a supevisor you will need to run an instance of the ModbusServer class somewhere on the local network. 
+
+###### Setting up PLCs
+
+The PLC setup is primarily done using the config file within the PLC folder. Within this config file you will configure what kind of devices are connected and controlled by the PLC. The parameters are:
+
+[address]:             The address that this device will use on Modbus. This can be any 3 digit hexadecimal number
+[device drivers]:      The driver files that the PLC will load. By default we have included drivers for a motor and a speed sensor, but                        users can add their own drivers for custom devices they would like to add. Each driver file is mapped to a device                        name, i.e. dev0 = motorDriver tells the system that dev0 is a device that uses the motorDriver class. 
+[parameter addresses]: The register addresses and names for each parameter, e.g. RPM, volts, etc that the PLC should listen/broadcast
+[server]:              The hostname and port that the modbus server service is running on. In the standard setup this is the supervisor                        Pi. 
+
 
 1) Install all the files in the Supervisory Computer onto 1 Raspberry Pi. Then run the Driver file.
 2) On the the last two Rasperry Pi's install all the files in the PLC files on each Raspberry Pi. Then run the Drvier file.
