@@ -24,6 +24,12 @@ def plc_start(hostname,username,password):
     ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/PLC/config.txt')
     plc_config = ssh_stdout.read().decode('ascii').strip('\n')
 
+    #Writes the plc config in the local directory
+    filename = hostname + "_config.txt"
+    file = open (filename,"w")
+    file.write(plc_config)
+    file.close()
+
     #Starts the PLCDriver process on remote device
     ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/PLC/PLCDriver.py')
 
