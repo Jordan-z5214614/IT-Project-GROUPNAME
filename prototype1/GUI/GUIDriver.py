@@ -178,11 +178,10 @@ class GUI:
         self.supervisorBox = Q.QGroupBox("Supervisory Computer " + number)
 
         #Sets up layout
-        layout = Q.QGridLayout()
+        layout = Q.QHBoxLayout()
 
         # ------------------------------------------------------------------ #
-        # Creates two turbine objects.
-        # TODO - Change the code so this process is dynamic using plc_config
+        # Creates two turbine objects dynamically using plc_config
         # ------------------------------------------------------------------ #
         for key, value in self.plc_config.items():
             for func in value.items('plc function'):
@@ -192,12 +191,11 @@ class GUI:
                 func_key = key + func[0]
                 self.func_list.update({func_key:func_class})
 
-        self.turbine1 = Turbine.Turbine()
-        self.turbine2 = Turbine.Turbine()
-
         #Adds created device windows to layout
-        layout.addWidget(self.turbine1.createTurbineBox("1"),0,0)
-        layout.addWidget(self.turbine2.createTurbineBox("2"),0,1)
+        count = 1
+        for value in func_list.values():
+            layout.addwidget(value.createFunctionBox(count))
+            ++count
 
         #Adds layout to window
         self.supervisorBox.setLayout(layout)
