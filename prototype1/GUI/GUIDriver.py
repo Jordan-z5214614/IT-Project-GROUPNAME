@@ -8,6 +8,7 @@ import sys
 import paramiko
 import time
 import multiprocessing
+import configparser
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 class HandlerSignals(Qt.QObject):
     rpm = Qt.pyqtSignal(int)
@@ -38,11 +39,11 @@ class ModbusHandler(Qt.QThread):
     def writeModbus(self,data):
 
         target=data[2]
-        self.client.write_register(0,target,unit=0x00)
+        self.client.write_register(0,target,unit=0x01)
 
     def readModbus(self,register):
 
-        registers = self.client.read_holding_registers(register,unit=0x00)
+        registers = self.client.read_holding_registers(register,unit=0x01)
         return(registers.registers[0])
 
     def startSupervisor(self):
@@ -50,6 +51,22 @@ class ModbusHandler(Qt.QThread):
         ssh.load_system_host_keys()
         ssh.connect(self.IP,username=self.USER,password=self.PWD)
 
+        supervisor_config = configparser.RawConfigParser()
+
+        ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt')
+        supervisor_config.read_string(ssh_stdout.read().decode('ascii').strip('\n'))
+        for plc in supervisor_config.items('plc list'):
+            #Opens the config for the PLC that stored on the Supervisory Computer
+            filename = plc[1] + "_config.txt"
+            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/' + filename)
+            plc_config = ssh_stdout.read().decode('ascii').strip('\n')
+
+            #Writes the config locally
+            file = open(filename, "w")
+            file.write(plc_config)
+            file.close()
+
+        #Starts the supervisor
         ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
         time.sleep(5)
 
