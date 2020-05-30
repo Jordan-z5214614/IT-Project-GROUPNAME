@@ -22,26 +22,19 @@ PWD='gr0upn@m3'
 # TODO update these so that parameters are generated dynamically.
 # Update will always exist, the others need to be generated.
 # ---------------------------------------------------------------- #
-class HandlerSignals(Qt.QObject):
-    rpm = Qt.pyqtSignal(int)
+class HandlerSignals(Qt.QObject,plc_config):
     update = Qt.pyqtSignal()
-    power = Qt.pyqtSignal(int)
 
 # ---------------------------------------------------------------- #
 # Handles the back end modbus integration for the GUI app
 # ---------------------------------------------------------------- #
 class ModbusHandler(Qt.QThread):
 
-    def __init__(self,turbine1,turbine2):
+    def __init__(self,plc_config,func_list):
         super(ModbusHandler, self).__init__()
 
-        #Takes the turbines passed and creates local objects
-        self.turbine1 = turbine1
-        self.turbine2 = turbine2
-        #Creates a PLC config dict to take in the SSH info. TODO move this process into parent
-        self.plc_configs = {}
         #Create signal handler object
-        self.signals = HandlerSignals()
+        self.signals = HandlerSignals(plc_config)
         #Start the modbus local client
         self.startModbusClient()
     #Override deafult PyQt run method
@@ -103,7 +96,7 @@ class GUI:
 
         #Loads the threadpool and handlers to process user inputs
         self.threadpool = Qt.QThreadPool()
-        handler = ModbusHandler(self.turbine1,self.turbine2)
+        handler = ModbusHandler(self.plc_config, self.func_list)
         handler.signals.rpm.connect(self.turbine1.setRPM)
         handler.signals.power.connect(self.turbine1.setPower)
         handler.signals.update.connect(self.turbine1.update)
@@ -127,7 +120,6 @@ class GUI:
         ssh = paramiko.SSHClient()
         ssh.load_system_host_keys()
         ssh.connect(IP,username=USER,password=PWD)
-
 
         #Starts the supervisor
         ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
