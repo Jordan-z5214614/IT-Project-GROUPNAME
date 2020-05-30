@@ -41,8 +41,6 @@ class ModbusHandler(Qt.QThread):
         self.plc_configs = {}
         #Create signal handler object
         self.signals = HandlerSignals()
-        #Start the supervisor process
-        self.startSupervisor()
         #Start the modbus local client
         self.startModbusClient()
     #Override deafult PyQt run method
@@ -63,7 +61,7 @@ class ModbusHandler(Qt.QThread):
             time.sleep(0.01)
 
     # ---------------------------------------------------------------- #
-    # Writes data to the modbus. Bespoke for the demo, TODO need to fix 
+    # Writes data to the modbus. Bespoke for the demo, TODO need to fix
     # this up to be more generic and compatible
     # ---------------------------------------------------------------- #
     def writeModbus(self,data):
@@ -79,6 +77,43 @@ class ModbusHandler(Qt.QThread):
 
         registers = self.client.read_holding_registers(register,unit=0x01)
         return(registers.registers[0])
+
+    #Starts the client connection to the Modbus server
+    def startModbusClient(self):
+        self.client = ModbusClient(self.IP,5020)
+        self.client.connect()
+
+# ------------------------------------------------------------------------------------------ #
+# Main GUI class
+# Builds a base window that the GUI classes for the different types of devices can be loaded
+# onto
+# ------------------------------------------------------------------------------------------ #
+class GUI:
+
+    plc_config = {}
+
+    def __init__(self):
+        #starts supervisor and loads PLC configs
+        self.startSupervisor()
+
+        #Loads the base window
+        self.buildGUI()
+
+        #Loads the threadpool and handlers to process user inputs
+        self.threadpool = Qt.QThreadPool()
+        handler = ModbusHandler(self.turbine1,self.turbine2)
+        handler.signals.rpm.connect(self.turbine1.setRPM)
+        handler.signals.power.connect(self.turbine1.setPower)
+        handler.signals.update.connect(self.turbine1.update)
+        handler.start()
+
+        #Start the GUI loop
+        self.window.show()
+        self.app.exec_()
+
+        #After the window closes clear Modbus and kill the handler thread
+        handler.writeModbus([0,0,0,0,0])
+        handler.terminate()
 
     # ---------------------------------------------------------------- #
     # Starts the supervisor via SSH, and pulls the PLC config files
@@ -102,10 +137,10 @@ class ModbusHandler(Qt.QThread):
             #Opens the config for the PLC that stored on the Supervisory Computer
             filename = plc[1] + "_config.txt"
             ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/' + filename)
-            plc_config = ssh_stdout.read().decode('ascii').strip('\n')
+            config_temp = ssh_stdout.read().decode('ascii').strip('\n')
 
             #Stores the config in the local dict plc_configs
-            self.plc_configs.update({plc[1]:plc_config})
+            self.plc_config.update({plc[0]:config_temp})
 
         #Starts the supervisor
         ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
@@ -113,39 +148,6 @@ class ModbusHandler(Qt.QThread):
 
         #Close the SSH connection
         ssh.close()
-
-    #Starts the client connection to the Modbus server
-    def startModbusClient(self):
-        self.client = ModbusClient(self.IP,5020)
-        self.client.connect()
-
-# ------------------------------------------------------------------------------------------ #
-# Main GUI class
-# Builds a base window that the GUI classes for the different types of devices can be loaded
-# onto
-# ------------------------------------------------------------------------------------------ #
-class GUI:
-
-    def __init__(self):
-
-        #Loads the base window
-        self.buildGUI()
-
-        #Loads the threadpool and handlers to process user inputs
-        self.threadpool = Qt.QThreadPool()
-        handler = ModbusHandler(self.turbine1,self.turbine2)
-        handler.signals.rpm.connect(self.turbine1.setRPM)
-        handler.signals.power.connect(self.turbine1.setPower)
-        handler.signals.update.connect(self.turbine1.update)
-        handler.start()
-
-        #Start the GUI loop
-        self.window.show()
-        self.app.exec_()
-
-        #After the window closes clear Modbus and kill the handler thread
-        handler.writeModbus([0,0,0,0,0])
-        handler.terminate()
 
     def buildGUI(self):
 
@@ -155,7 +157,7 @@ class GUI:
 
         # ----------------------------------------------------------------- #
         # Creates the windows for each supervisory computer. At this stage,
-        # is only set up for a single supervisor and is hard coded. 
+        # is only set up for a single supervisor and is hard coded.
         # ----------------------------------------------------------------- #
         self.createSupervisorBox("1")
 
@@ -175,7 +177,7 @@ class GUI:
         layout = Q.QGridLayout()
 
         # ------------------------------------------------------------------ #
-        # Creates two turbine objects. 
+        # Creates two turbine objects.
         # TODO - Change the code so this process is dynamic using plc_config
         # ------------------------------------------------------------------ #
         self.turbine1 = Turbine.Turbine()
