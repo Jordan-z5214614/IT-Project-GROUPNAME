@@ -174,10 +174,14 @@ class GUI:
 
         # ------------------------------------------------------------------ #
         # Creates two turbine objects dynamically using plc_config
+        # TODO EXPLAIN THIS MORE
         # ------------------------------------------------------------------ #
         for key, value in self.plc_config.items():
             for func in value.items('plc function'):
                 class_name = func[1]
+                # import the class for the users devices, in this example we use
+                # a turbine device and have a turbine class, they might use
+                # others
                 func_class = getattr(importlib.import_module(class_name), class_name)
                 func_obj = func_class()
                 func_key = key + func[0]
