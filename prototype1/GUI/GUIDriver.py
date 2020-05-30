@@ -18,6 +18,21 @@ class ModbusHandler(Qt.QThread):
     IP='111.220.27.216'
     USER='pi'
     PWD='gr0upn@m3'
+    PLC_dict = {} # dictionary for storing the PLC information
+    
+    #function to find the number of PLCs in use, using the config file, putting this information into the PLC-dict
+    def find_num_PLCs(self):
+        ssh = paramiko.SSHClient()
+        ssh.load_system_host_keys()
+        ssh.connect(self.IP,username=self.USER,password=self.PWD)
+
+        ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt')
+        config = configparser.RawConfigParser()
+        config.read_string(config_cat.read().decode('ascii').strip('\n'))
+        i = 1
+        for plc in config.items('plc list'):
+            PLC_dict['plc'+i] = 'turbine' + i
+            i = i + 1
 
     def __init__(self,turbine1,turbine2):
         super(ModbusHandler, self).__init__()
