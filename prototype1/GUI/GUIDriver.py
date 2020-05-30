@@ -80,7 +80,7 @@ class ModbusHandler(Qt.QThread):
 
     #Starts the client connection to the Modbus server
     def startModbusClient(self):
-        self.client = ModbusClient(self.IP,5020)
+        self.client = ModbusClient(IP,5020)
         self.client.connect()
 
 # ------------------------------------------------------------------------------------------ #
@@ -124,7 +124,7 @@ class GUI:
         #Setup SSH connection
         ssh = paramiko.SSHClient()
         ssh.load_system_host_keys()
-        ssh.connect(self.IP,username=self.USER,password=self.PWD)
+        ssh.connect(IP,username=USER,password=PWD)
 
         #Setup the config parser
         supervisor_config = configparser.RawConfigParser()
