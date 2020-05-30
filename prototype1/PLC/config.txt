@@ -1,6 +1,9 @@
 [address]
 address = 0x00
 
+[plc function]
+func1 = Turbine
+
 [device drivers]
 dev0 = motorDriver
 dev1 = speedSensDriver
