@@ -86,8 +86,8 @@ def main():
     config.read(file)
 
     num_of_plcs = len(config.items('plc list'))
-    print(num_of_plcs)
-    server = Process(target=modbusServer.run_server, args=(num_of_plcs))
+    print("Number of PLCS detected: " + str(num_of_plcs))
+    server = Process(target=modbusServer.run_server, args=(num_of_plcs,))
 
     try:
         print("Starting Modbus Server...", end='')
