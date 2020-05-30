@@ -19,6 +19,7 @@ class ModbusHandler(Qt.QThread):
     USER='pi'
     PWD='gr0upn@m3'
     PLC_dict = {} # dictionary for storing the PLC information
+    PLC_count = 0 # number of plcs in use
     
     #function to find the number of PLCs in use, using the config file, putting this information into the PLC-dict
     def find_num_PLCs(self):
@@ -33,6 +34,7 @@ class ModbusHandler(Qt.QThread):
         for plc in config.items('plc list'):
             PLC_dict['plc'+i] = 'turbine' + i
             i = i + 1
+        PLC_count = len(PLC_dict)
 
     def __init__(self,turbine1,turbine2):
         super(ModbusHandler, self).__init__()
