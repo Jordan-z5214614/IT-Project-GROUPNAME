@@ -10,6 +10,7 @@ import time
 import multiprocessing
 import configparser
 import importlib
+import itertools
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 
 IP='111.220.27.216'
@@ -22,8 +23,9 @@ PWD='gr0upn@m3'
 # TODO update these so that parameters are generated dynamically.
 # Update will always exist, the others need to be generated.
 # ---------------------------------------------------------------- #
-class HandlerSignals(Qt.QObject,plc_config):
+class HandlerSignals(Qt.QObject):
     update = Qt.pyqtSignal()
+    param = Qt.pyqtSignal(dict)
 
 # ---------------------------------------------------------------- #
 # Handles the back end modbus integration for the GUI app
@@ -33,10 +35,14 @@ class ModbusHandler(Qt.QThread):
     def __init__(self,plc_config,func_list):
         super(ModbusHandler, self).__init__()
 
+        #Import config/object lists
+        self.plc_config = plc_config
+        self.func_list = func_list
         #Create signal handler object
-        self.signals = HandlerSignals(plc_config)
+        self.signals = HandlerSignals()
         #Start the modbus local client
         self.startModbusClient()
+
     #Override deafult PyQt run method
     @Qt.pyqtSlot()
     #Main signal handler loop
@@ -47,12 +53,15 @@ class ModbusHandler(Qt.QThread):
         # the GUI, then sleeps
         # ------------------------------------------------------------ #
         while True:
-            data = self.turbine1.getValues()
-            self.writeModbus(data)
-            self.signals.rpm.emit(self.readModbus(2))
-            self.signals.power.emit(self.readModbus(1))
-            self.signals.update.emit()
-            time.sleep(0.01)
+            for (func, plc) in zip(self.func_list.values(), self.plc_config.values()):
+                data = func.getValues(func)
+                plc_address = plc.get('address','address')
+                print(str(data) + str(plc_address))
+                #self.writeModbus(data)
+            #self.signals.param.emit(self.readModbus(2))
+            #self.signals.power.emit(self.readModbus(1))
+            #self.signals.update.emit()
+            time.sleep(1)
 
     # ---------------------------------------------------------------- #
     # Writes data to the modbus. Bespoke for the demo, TODO need to fix
@@ -84,7 +93,7 @@ class ModbusHandler(Qt.QThread):
 # ------------------------------------------------------------------------------------------ #
 class GUI:
 
-    plc_config ={}
+    plc_config = {}
     func_list = {}
 
     def __init__(self):
@@ -96,10 +105,10 @@ class GUI:
 
         #Loads the threadpool and handlers to process user inputs
         self.threadpool = Qt.QThreadPool()
-        handler = ModbusHandler(self.plc_config, self.func_list)
-        handler.signals.rpm.connect(self.turbine1.setRPM)
-        handler.signals.power.connect(self.turbine1.setPower)
-        handler.signals.update.connect(self.turbine1.update)
+        handler = ModbusHandler(self.plc_config,self.func_list)
+        #handler.signals.rpm.connect(self.turbine1.setRPM)
+        #handler.signals.power.connect(self.turbine1.setPower)
+        #handler.signals.update.connect(self.turbine1.update)
         handler.start()
 
         #Start the GUI loop
@@ -189,8 +198,8 @@ class GUI:
 
         #Adds created device windows to layout
         count = 1
-        for value in func_list.values():
-            layout.addwidget(value.createFunctionBox(count))
+        for value in self.func_list.values():
+            layout.addWidget(value.createFuncBox(value,str(count)))
             ++count
 
         #Adds layout to window
@@ -205,3 +214,11 @@ if __name__=='__main__':
 
     #Starts the main GUI program
     gui = GUI()
+
+
+# ---------------------------------------------------------------- #
+# Defines the parameters that can be used by PyQt signal processes
+# to send signals outside the main GUI loop
+# TODO update these so that parameters are generated dynamically.
+# Update will always exist, the others need to be generated.
+# ---------------------------------------------------------------- #

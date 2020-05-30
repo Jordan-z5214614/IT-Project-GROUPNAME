@@ -1,7 +1,7 @@
 import PyQt5.QtWidgets as Q
 import PyQt5.QtCore as Qt
 
-class Turbine:
+class Turbine():
 
     RPM = 0
     power = 0
@@ -41,7 +41,7 @@ class Turbine:
         self.stopButton.setEnabled(False)
         self.startButton.setEnabled(True)
         self.update()
-    def createTurbineBox(self,number):
+    def createFuncBox(self,number):
 
         turbineBox = Q.QGroupBox("Turbine " + number)
 
