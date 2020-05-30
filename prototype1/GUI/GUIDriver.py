@@ -9,6 +9,7 @@ import paramiko
 import time
 import multiprocessing
 import configparser
+import importlib
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 
 IP='111.220.27.216'
@@ -90,7 +91,7 @@ class ModbusHandler(Qt.QThread):
 # ------------------------------------------------------------------------------------------ #
 class GUI:
 
-    plc_config = {}
+    plc_config ={}
     func_list = {}
 
     def __init__(self):
@@ -127,9 +128,14 @@ class GUI:
         ssh.load_system_host_keys()
         ssh.connect(IP,username=USER,password=PWD)
 
+
+        #Starts the supervisor
+        ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
+        time.sleep(5)
+
         #Setup the config parser
         supervisor_config = configparser.RawConfigParser()
-
+        config_temp = configparser.RawConfigParser()
         #Loads the supervisor core config
         ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt')
         supervisor_config.read_string(ssh_stdout.read().decode('ascii').strip('\n'))
@@ -137,15 +143,12 @@ class GUI:
         for plc in supervisor_config.items('plc list'):
             #Opens the config for the PLC that stored on the Supervisory Computer
             filename = plc[1] + "_config.txt"
+
             ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/' + filename)
-            config_temp = ssh_stdout.read().decode('ascii').strip('\n')
+            config_temp.read_string(ssh_stdout.read().decode('ascii').strip('\n'))
 
             #Stores the config in the local dict plc_configs
             self.plc_config.update({plc[0]:config_temp})
-
-        #Starts the supervisor
-        ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
-        time.sleep(5)
 
         #Close the SSH connection
         ssh.close()
@@ -181,15 +184,13 @@ class GUI:
         # Creates two turbine objects.
         # TODO - Change the code so this process is dynamic using plc_config
         # ------------------------------------------------------------------ #
-        for key, value in plc_config.items():
+        for key, value in self.plc_config.items():
             for func in value.items('plc function'):
                 class_name = func[1]
                 func_class = getattr(importlib.import_module(class_name), class_name)
                 func_obj = func_class()
                 func_key = key + func[0]
-                func_list.update({func_key, func_class})
-
-        print(func_list)
+                self.func_list.update({func_key:func_class})
 
         self.turbine1 = Turbine.Turbine()
         self.turbine2 = Turbine.Turbine()
@@ -204,9 +205,9 @@ class GUI:
 if __name__=='__main__':
 
     #Starts the login window
-    login = Q.QApplication(sys.argv)
-    window = TurbineLogin.Ui()
-    login.exec_()
+    #login = Q.QApplication(sys.argv)
+    #window = TurbineLogin.Ui()
+    #login.exec_()
 
     #Starts the main GUI program
     gui = GUI()
