@@ -23,6 +23,7 @@ class ModbusHandler(Qt.QThread):
         super(ModbusHandler, self).__init__()
         self.turbine1 = turbine1
         self.turbine2 = turbine2
+        self.plc_configs = {}
         self.signals = HandlerSignals()
         self.startSupervisor()
         self.startModbusClient()
@@ -61,11 +62,9 @@ class ModbusHandler(Qt.QThread):
             ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/' + filename)
             plc_config = ssh_stdout.read().decode('ascii').strip('\n')
 
-            #Writes the config locally
-            file = open(filename, "w")
-            file.write(plc_config)
-            file.close()
+            self.plc_configs.update({plc[1]:plc_config})
 
+        print(self.plc_configs)
         #Starts the supervisor
         ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
         time.sleep(5)
