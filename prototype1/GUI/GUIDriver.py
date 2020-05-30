@@ -91,6 +91,7 @@ class ModbusHandler(Qt.QThread):
 class GUI:
 
     plc_config = {}
+    func_list = {}
 
     def __init__(self):
         #starts supervisor and loads PLC configs
@@ -180,6 +181,16 @@ class GUI:
         # Creates two turbine objects.
         # TODO - Change the code so this process is dynamic using plc_config
         # ------------------------------------------------------------------ #
+        for key, value in plc_config.items():
+            for func in value.items('plc function'):
+                class_name = func[1]
+                func_class = getattr(importlib.import_module(class_name), class_name)
+                func_obj = func_class()
+                func_key = key + func[0]
+                func_list.update({func_key, func_class})
+
+        print(func_list)
+
         self.turbine1 = Turbine.Turbine()
         self.turbine2 = Turbine.Turbine()
 
