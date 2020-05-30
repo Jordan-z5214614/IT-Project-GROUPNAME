@@ -14,14 +14,20 @@ from pymodbus.device import ModbusDeviceIdentification
 from pymodbus.datastore import ModbusSequentialDataBlock
 from pymodbus.datastore import ModbusSlaveContext, ModbusServerContext
 
-def run_server():
+def run_server(num_of_plcs):
 
-    slaves = {
+    slaves = {}
 
-        0x01: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10)),
-        0x02: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10))
+    # ----------------------------------------------------------------------- #
+    # Dynamically generates an address space starting from 0x01 for the
+    # of PLCs that are passed. You can create your own address space, refer to
+    # the pymodbus documentation, particularly the synchronous server example
+    # ----------------------------------------------------------------------- #
+    for num in range(1,num_of_plcs+1):
+        address = "0x" + str(num)
+        slaves.update({address: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10))})
 
-    }
+
 
     context = ModbusServerContext(slaves=slaves, single=False)
 

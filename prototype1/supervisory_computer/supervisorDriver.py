@@ -41,15 +41,15 @@ def plc_start(hostname,username,password):
 #For each PLC listed in the supevisor config file, calls plc_start on each and saves the PLCs individual config data in plc_list. 
 #The config data saved is PLC Modbus Address, and the assosiated parameters and their respective modbus register addresses. 
 #The format is dict<String name, dict<String address, dict<String Parameter Name, Int Register Number>>>
-def load_plcs():
+def load_plcs(config):
 
     plc_list = {}
 
     #Read in supevisor config file
-    config = configparser.RawConfigParser()
+    #config = configparser.RawConfigParser()
 
-    file = r'/home/pi/IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt'
-    config.read(file)
+    #file = r'/home/pi/IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt'
+    #config.read(file)
 
     #Iterates the PLCs listed in the supevisor config file
     for plc in config.items('plc list'):
@@ -74,13 +74,20 @@ def load_plcs():
         #Store PLC address and parameter list in plc_list
         plc_list.update({plc[0]:{plc_config.get('address','address'):param_list}})
 
-        print(plc_list)
     return(plc_list)
 
-#Starts a server in a thread, then takes a PWM value from the user. 
+#Starts a thread that contains a Modbus server handler, then connects and starts each PLC
 def main():
 
-    server = Process(target=modbusServer.run_server)
+    #Read in supevisor config file
+    config = configparser.RawConfigParser()
+
+    file = r'/home/pi/IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt'
+    config.read(file)
+
+    num_of_plcs = len(config.items('plc list'))
+    print(num_of_plcs)
+    server = Process(target=modbusServer.run_server, args=(num_of_plcs))
 
     try:
         print("Starting Modbus Server...", end='')
@@ -88,14 +95,17 @@ def main():
         print("Done!")
 
         print("Starting PLCs...", end='')
-        plc_list = load_plcs()
+        plc_list = load_plcs(config)
         print("Done!")
 
-        print("Starting user interface...")
-        client = ModbusClient('supervisor',5020)
-        client.connect()
+        #---------------------------------------------------------------------------------#
+        # If you wish to run your own Interface on the supervisor, uncomment the code here#
+        #---------------------------------------------------------------------------------#
+        #print("Starting user interface...")
+        #client = ModbusClient('supervisor',5020)
+        #client.connect()
 
-        interface = supervisorInterface.supervisorInterface(plc_list,client)
+        #interface = YourCode.YourClass(plc_list,client)
 
 
     except KeyboardInterrupt:
