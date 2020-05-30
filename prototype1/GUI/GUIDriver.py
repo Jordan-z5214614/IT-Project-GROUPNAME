@@ -62,39 +62,59 @@ class ModbusHandler(Qt.QThread):
             self.signals.update.emit()
             time.sleep(0.01)
 
+    # ---------------------------------------------------------------- #
+    # Writes data to the modbus. Bespoke for the demo, TODO need to fix 
+    # this up to be more generic and compatible
+    # ---------------------------------------------------------------- #
     def writeModbus(self,data):
 
         target=data[2]
         self.client.write_register(0,target,unit=0x01)
 
+    # ---------------------------------------------------------------- #
+    # Reads the modbus, and returns the value in the give register
+    # TODO parameterise the address as well as the register
+    # ---------------------------------------------------------------- #
     def readModbus(self,register):
 
         registers = self.client.read_holding_registers(register,unit=0x01)
         return(registers.registers[0])
 
+    # ---------------------------------------------------------------- #
+    # Starts the supervisor via SSH, and pulls the PLC config files
+    # TODO move this to a parent so that the PLC config exists before
+    # we try to create the GUI app
+    # ---------------------------------------------------------------- #
     def startSupervisor(self):
+        #Setup SSH connection
         ssh = paramiko.SSHClient()
         ssh.load_system_host_keys()
         ssh.connect(self.IP,username=self.USER,password=self.PWD)
 
+        #Setup the config parser
         supervisor_config = configparser.RawConfigParser()
 
+        #Loads the supervisor core config
         ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt')
         supervisor_config.read_string(ssh_stdout.read().decode('ascii').strip('\n'))
+
         for plc in supervisor_config.items('plc list'):
             #Opens the config for the PLC that stored on the Supervisory Computer
             filename = plc[1] + "_config.txt"
             ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/' + filename)
             plc_config = ssh_stdout.read().decode('ascii').strip('\n')
 
+            #Stores the config in the local dict plc_configs
             self.plc_configs.update({plc[1]:plc_config})
 
         #Starts the supervisor
         ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
         time.sleep(5)
 
+        #Close the SSH connection
         ssh.close()
 
+    #Starts the client connection to the Modbus server
     def startModbusClient(self):
         self.client = ModbusClient(self.IP,5020)
         self.client.connect()
