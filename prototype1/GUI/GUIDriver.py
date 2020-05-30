@@ -48,38 +48,55 @@ class ModbusHandler(Qt.QThread):
     #Main signal handler loop
     def run(self):
         # ------------------------------------------------------------ #
-        # Gets data from only turbine 1 at this stage, then reads/writes
-        # to Modbus using the signals, and then calls update to update
-        # the GUI, then sleeps
+        # Loops over each function, and the assosiated plc config
+        # Loads the data from the function class, writes the update
+        # to modbus. It then reads from the modbus, and sends the updated
+        # data to the function object. Note that each modbus parameter
+        # must be read or write. They cannot be both. Refer to
+        # documentation for further information
         # ------------------------------------------------------------ #
         while True:
             for (func, plc) in zip(self.func_list.values(), self.plc_config.values()):
                 data = func.getValues(func)
-                plc_address = plc.get('address','address')
-                print(str(data) + str(plc_address))
-                #self.writeModbus(data)
-            #self.signals.param.emit(self.readModbus(2))
-            #self.signals.power.emit(self.readModbus(1))
-            #self.signals.update.emit()
-            time.sleep(1)
+                self.writeModbus(data,plc)
+                data = self.readModbus(plc)
+                self.signals.update.emit()
+            time.sleep(0.01)
 
     # ---------------------------------------------------------------- #
-    # Writes data to the modbus. Bespoke for the demo, TODO need to fix
-    # this up to be more generic and compatible
+    # Takes a data dict {parameter name:value} and a plc_config object
+    # and then writes the data in the dict to the plc referenced in the
+    # config. The parameter name in data must match the parameter addresses
+    # in the plc_config file
     # ---------------------------------------------------------------- #
-    def writeModbus(self,data):
+    def writeModbus(self,data,config):
 
-        target=data[2]
-        self.client.write_register(0,target,unit=0x01)
+        #Loads the address, and converts from base 16 from config
+        address = int(config.get('address','address'),16)
+        #Loops through each line in data and writes to the modbus
+        for param in data.items():
+            #Retrieves the parameter destination register from config
+            register = int(config.get('parameter addresses',param[0]))
+            #Write function
+            self.client.write_register(register,param[1],unit=address)
 
     # ---------------------------------------------------------------- #
-    # Reads the modbus, and returns the value in the give register
-    # TODO parameterise the address as well as the register
+    # Returns the data dict for the given plc_config item from the 
+    # modbus
     # ---------------------------------------------------------------- #
-    def readModbus(self,register):
+    def readModbus(self,config):
 
-        registers = self.client.read_holding_registers(register,unit=0x01)
-        return(registers.registers[0])
+        #Loads the address, and converts from base 16 from config
+        address = int(config.get('address','address'),16)
+        #Setup a data dict
+        data = {}
+
+        for param in config.items('parameter addresses'):
+            register = int(param[1])
+            registers = self.client.read_holding_registers(register,unit=address)
+            data.update({param[0]:registers.registers[0]})
+
+        return(data)
 
     #Starts the client connection to the Modbus server
     def startModbusClient(self):
@@ -136,7 +153,7 @@ class GUI:
 
         #Setup the config parser
         supervisor_config = configparser.RawConfigParser()
-        config_temp = configparser.RawConfigParser()
+
         #Loads the supervisor core config
         ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/config.txt')
         supervisor_config.read_string(ssh_stdout.read().decode('ascii').strip('\n'))
@@ -144,7 +161,7 @@ class GUI:
         for plc in supervisor_config.items('plc list'):
             #Opens the config for the PLC that stored on the Supervisory Computer
             filename = plc[1] + "_config.txt"
-
+            config_temp = configparser.RawConfigParser()
             ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('cat IT-Project-GROUPNAME/prototype1/supervisory_computer/' + filename)
             config_temp.read_string(ssh_stdout.read().decode('ascii').strip('\n'))
 

@@ -9,7 +9,8 @@ class Turbine():
     mode = 0
     hold = 0
     def getValues(self):
-        return(self.RPM,self.power,self.target,self.mode)
+        data = {'targetrpm':self.target}
+        return(data)
     def setRPM(self, rpm):
         self.RPM=rpm
     def setPower(self, power):
