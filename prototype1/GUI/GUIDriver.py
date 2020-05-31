@@ -223,16 +223,30 @@ class GUI:
         layout = Q.QHBoxLayout()
 
         # ------------------------------------------------------------------ #
+<<<<<<< HEAD
         # Creates two turbine objects dynamically using plc_config.
         # Importlib import modules based on an argument, meaning that we
         # can use dynamic parameters to import classes, such as those defined
         # in a config object.
+=======
+        # Creates the turbine objects dynamically, using the plc_config
+        # dictionary. In the current scenario only two turbines are used,
+        # however, this method allows for n number of turbine objects to be
+        # created. This is done by reading-in the plc_config.txt file and
+        # interpreting the number of devices and what kind they are. Python
+        # objects for these devices are imported as python classes. The classes
+        # for the devices must have the same name as the device in the config
+        # file.
+>>>>>>> 22ee5efcbee2b8b3ee815f89cb52142e2dad11a5
         # ------------------------------------------------------------------ #
         for key, value in self.plc_config.items():
             for func in value.items('plc function'):
                 #Loads the classname specified for each function in plc_config
                 class_name = func[1]
+<<<<<<< HEAD
                 #Imports the classfile defined
+=======
+>>>>>>> 22ee5efcbee2b8b3ee815f89cb52142e2dad11a5
                 func_class = getattr(importlib.import_module(class_name), class_name)
                 #Creates a new instance of the classfile
                 func_obj = func_class()
@@ -241,7 +255,8 @@ class GUI:
                 #adds the object to the func_list
                 self.func_list.update({func_key:func_obj})
 
-        #Adds created device windows to layout
+        # Adds created device windows to layout, this is done dynamically, using
+        # the func_list above and allocating it a space using the createFuncBox method.
         count = 1
         for value in self.func_list.values():
             layout.addWidget(value.createFuncBox(str(count)))

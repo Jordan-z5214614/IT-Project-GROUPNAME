@@ -120,22 +120,22 @@
      <string>Exit</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="username">
+   <widget class="QLineEdit" name="Username">
     <property name="geometry">
      <rect>
       <x>470</x>
       <y>190</y>
-      <width>181</width>
+      <width>201</width>
       <height>41</height>
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="password">
+   <widget class="QLineEdit" name="Password">
     <property name="geometry">
      <rect>
       <x>470</x>
       <y>240</y>
-      <width>181</width>
+      <width>201</width>
       <height>41</height>
      </rect>
     </property>
@@ -153,6 +153,10 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>loginButton</tabstop>
+  <tabstop>exitButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
