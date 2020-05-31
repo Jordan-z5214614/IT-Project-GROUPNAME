@@ -3,14 +3,19 @@ import PyQt5.QtCore as Qt
 
 class Turbine():
 
-    RPM = 0
-    power = 0
-    target = 0
-    mode = 0
-    hold = 0
+    def __init__(self):
+        self.RPM = 0
+        self.power = 0
+        self.target = 0
+        self.mode = 0
+        self.hold = 0
     def getValues(self):
         data = {'targetrpm':self.target}
         return(data)
+    def setValues(self,data):
+        self.RPM = data.get('rpm')
+        self.power = data.get('pwm')
+        self.update()
     def setRPM(self, rpm):
         self.RPM=rpm
     def setPower(self, power):
@@ -102,5 +107,5 @@ class Turbine():
         layout.addWidget(modeSelect,0,0,1,5)
         layout.addWidget(paramDisp,1,0,6,5)
         turbineBox.setLayout(layout)
-
+        
         return(turbineBox)
