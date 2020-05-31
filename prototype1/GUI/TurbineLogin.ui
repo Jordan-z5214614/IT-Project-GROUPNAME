@@ -120,7 +120,7 @@
      <string>Exit</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Username">
+   <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -130,7 +130,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Password">
+   <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>470</x>
