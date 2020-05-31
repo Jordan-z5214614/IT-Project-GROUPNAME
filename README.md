@@ -79,7 +79,7 @@ A detailed physical system that takes inputs from the emulated system to provide
  
 If you wish to add to the design e.g. add extra machines or turbines, then extra physical requirments may be needed. Please view the 'Create Your Own' section of the "README.md" file for more information about extending this project. 
  </br></br>
-### Set up Automatically:
+
 
 ### Set Up Manually:
 
@@ -97,10 +97,6 @@ After the Pi has been set up and the hostname has been set, clone this github in
  
 After the setup has been completed install the requirements listed in the "requirements.txt" from the master or the link:
 https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/requirements.txt
-
-These are also listed below for your convinence:
-
-#TODO insert requirements
 
 After all the Raspberry Pi's have the requirements installed, the Raspberry Pi's can be set up. 
 
