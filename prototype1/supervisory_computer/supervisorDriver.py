@@ -98,6 +98,8 @@ def main():
         plc_list = load_plcs(config)
         print("Done!")
 
+        while True:
+            time.sleep(1)
         #---------------------------------------------------------------------------------#
         # If you wish to run your own Interface on the supervisor, uncomment the code here#
         #---------------------------------------------------------------------------------#
@@ -111,7 +113,7 @@ def main():
     except KeyboardInterrupt:
         print("\nShutting down")
         server.terminate()
-        client.close()
+        #client.close()
 
 if __name__ == "__main__":
 

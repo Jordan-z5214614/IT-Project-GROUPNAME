@@ -24,8 +24,8 @@ def run_server(num_of_plcs):
     # the pymodbus documentation, particularly the synchronous server example
     # ----------------------------------------------------------------------- #
     for num in range(1,num_of_plcs+1):
-        address = "0x" + str(num)
-        slaves.update({address: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10))})
+
+        slaves.update({num: ModbusSlaveContext(hr=ModbusSequentialDataBlock(0,[5]*10))})
 
 
 
@@ -50,4 +50,4 @@ def run_server(num_of_plcs):
     StartTcpServer(context, identity=identity, address=("0.0.0.0", 5020))
 
 if __name__ == "__main__":
-    run_server()
+    run_server(2)
