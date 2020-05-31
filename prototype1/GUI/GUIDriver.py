@@ -25,18 +25,19 @@ PWD='gr0upn@m3'
 class HandlerSignals(Qt.QObject):
     setValues = Qt.pyqtSignal(dict)
     getValues = Qt.pyqtSignal()
+    stop = Qt.pyqtSignal()
 
 # ---------------------------------------------------------------- #
 # Handles the back end modbus integration for the GUI app
 # ---------------------------------------------------------------- #
-class ModbusHandler(Qt.QThread):
+class ModbusHandler(Qt.QRunnable):
 
-    def __init__(self,plc_config,func_list):
+    def __init__(self,plc,func):
         super(ModbusHandler, self).__init__()
-
+        self.run= True
         #Import config/object lists
-        self.plc_config = plc_config
-        self.func_list = func_list
+        self.plc = plc
+        self.func = func
         #Create signal handler object
         #for func in func_list.values():
         self.signals = HandlerSignals()
@@ -56,13 +57,13 @@ class ModbusHandler(Qt.QThread):
         # must be read or write. They cannot be both. Refer to
         # documentation for further information
         # ------------------------------------------------------------ #
-        while True:
-            for (func, plc) in zip(self.func_list.values(), self.plc_config.values()):
-                data = func.getValues()
-                self.writeModbus(data,plc)
-                data = self.readModbus(plc)
-                self.signals.setValues.emit(data)
-
+        while self.run == True:
+            data = self.func.getValues()
+            self.writeModbus(data,self.plc)
+            data = self.readModbus(self.plc)
+            self.signals.setValues.emit(data)
+    def stop(self):
+        self.run = False
     # ---------------------------------------------------------------- #
     # Takes a data dict {parameter name:value} and a plc_config object
     # and then writes the data in the dict to the plc referenced in the
@@ -95,7 +96,6 @@ class ModbusHandler(Qt.QThread):
             register = int(param[1]) #Loads individual register address
             registers = self.client.read_holding_registers(register,unit=address) #Read register
             data.update({param[0]:registers.registers[0]}) #Adds results to data
-
         return(data)
 
     #Starts the client connection to the Modbus server
@@ -131,12 +131,12 @@ class GUI:
         # responsible for the modbus transactions for each device, and the slot/signal managment
         # to communicate information in and out of the GUI thread (see PyQt slot/signal docs)
         # --------------------------------------------------------------------------------------- #
-        for func in self.func_list.values():
-            handler = ModbusHandler(self.plc_config,self.func_list) #Handler object
+        for func, plc in zip(self.func_list.values(), self.plc_config.values()):
+            handler = ModbusHandler(plc,func)           #Handler object
             handler.signals.setValues.connect(func.setValues)       #Assign signals
             handler.signals.getValues.connect(func.getValues)
-            handler.start()                                         #Start the thread
-
+            handler.signals.stop.connect(handler.stop)
+            self.threadpool.start(handler)                          #Start the thread
             handlers.append(handler)                                #Store the handlers in a list so we can kill them later
 
 
@@ -160,7 +160,7 @@ class GUI:
 
             handler.signals.setValues.emit(data)
             handler.writeModbus(data,plc)
-            handler.terminate()
+            handler.signals.stop.emit()
 
     # ---------------------------------------------------------------- #
     # Starts the supervisor via SSH, and pulls the PLC config files
@@ -173,7 +173,7 @@ class GUI:
 
         #Starts the supervisor
         ssh.exec_command('python3 IT-Project-GROUPNAME/prototype1/supervisory_computer/supervisorDriver.py')
-        time.sleep(1)
+        time.sleep(5)
 
         #Setup the config parser
         supervisor_config = configparser.RawConfigParser()
