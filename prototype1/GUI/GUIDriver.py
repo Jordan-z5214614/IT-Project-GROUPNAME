@@ -81,7 +81,7 @@ class ModbusHandler(Qt.QThread):
             self.client.write_register(register,param[1],unit=address)
 
     # ---------------------------------------------------------------- #
-    # Returns the data dict for the given plc_config item from the 
+    # Returns the data dict for the given plc_config item from the
     # modbus
     # ---------------------------------------------------------------- #
     def readModbus(self,config):
@@ -199,21 +199,25 @@ class GUI:
         layout = Q.QHBoxLayout()
 
         # ------------------------------------------------------------------ #
-        # Creates two turbine objects dynamically using plc_config
-        # TODO EXPLAIN THIS MORE
+        # Creates the turbine objects dynamically, using the plc_config
+        # dictionary. In the current scenario only two turbines are used,
+        # however, this method allows for n number of turbine objects to be
+        # created. This is done by reading-in the plc_config.txt file and
+        # interpreting the number of devices and what kind they are. Python
+        # objects for these devices are imported as python classes. The classes
+        # for the devices must have the same name as the device in the config
+        # file.
         # ------------------------------------------------------------------ #
         for key, value in self.plc_config.items():
             for func in value.items('plc function'):
                 class_name = func[1]
-                # import the class for the users devices, in this example we use
-                # a turbine device and have a turbine class, they might use
-                # others
                 func_class = getattr(importlib.import_module(class_name), class_name)
                 func_obj = func_class()
                 func_key = key + func[0]
                 self.func_list.update({func_key:func_class})
 
-        #Adds created device windows to layout
+        # Adds created device windows to layout, this is done dynamically, using
+        # the func_list above and allocating it a space using the createFuncBox method.
         count = 1
         for value in self.func_list.values():
             layout.addWidget(value.createFuncBox(value,str(count)))
