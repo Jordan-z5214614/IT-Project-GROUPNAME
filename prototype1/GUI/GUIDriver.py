@@ -30,7 +30,7 @@ class HandlerSignals(Qt.QObject):
 # ---------------------------------------------------------------- #
 # Handles the back end modbus integration for the GUI app
 # ---------------------------------------------------------------- #
-class ModbusHandler(Qt.QRunnable):
+class ModbusHandler(Qt.QThread):
 
     def __init__(self,plc,func):
         super(ModbusHandler, self).__init__()
@@ -46,9 +46,10 @@ class ModbusHandler(Qt.QRunnable):
         self.startModbusClient()
 
     #Override deafult PyQt run method
-    @Qt.pyqtSlot()
+    #@Qt.pyqtSlot()
     #Main signal handler loop
     def run(self):
+        print("running: ", self)
         # ------------------------------------------------------------ #
         # Loops over each function, and the assosiated plc config
         # Loads the data from the function class, writes the update
@@ -62,6 +63,7 @@ class ModbusHandler(Qt.QRunnable):
             self.writeModbus(data,self.plc)
             data = self.readModbus(self.plc)
             self.signals.setValues.emit(data)
+            time.sleep(0.1)
     def stop(self):
         self.run = False
     # ---------------------------------------------------------------- #
@@ -136,7 +138,7 @@ class GUI:
             handler.signals.setValues.connect(func.setValues)       #Assign signals
             handler.signals.getValues.connect(func.getValues)
             handler.signals.stop.connect(handler.stop)
-            self.threadpool.start(handler)                          #Start the thread
+            handler.start()                          #Start the thread
             handlers.append(handler)                                #Store the handlers in a list so we can kill them later
 
 
@@ -160,7 +162,8 @@ class GUI:
 
             handler.signals.setValues.emit(data)
             handler.writeModbus(data,plc)
-            handler.signals.stop.emit()
+            #handler.signals.stop.emit()
+            handler.terminate()
 
     # ---------------------------------------------------------------- #
     # Starts the supervisor via SSH, and pulls the PLC config files
@@ -247,6 +250,7 @@ class GUI:
                 func_obj = func_class()
                 #Generates a string as a key
                 func_key = key + func[0]
+                print(func_key)
                 #adds the object to the func_list
                 self.func_list.update({func_key:func_obj})
 
@@ -255,7 +259,7 @@ class GUI:
         count = 1
         for value in self.func_list.values():
             layout.addWidget(value.createFuncBox(str(count)))
-            ++count
+            count = count + 1
 
         #Adds layout to window
         self.supervisorBox.setLayout(layout)
