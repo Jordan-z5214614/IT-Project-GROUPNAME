@@ -223,12 +223,10 @@ class GUI:
         layout = Q.QHBoxLayout()
 
         # ------------------------------------------------------------------ #
-<<<<<<< HEAD
         # Creates two turbine objects dynamically using plc_config.
         # Importlib import modules based on an argument, meaning that we
         # can use dynamic parameters to import classes, such as those defined
         # in a config object.
-=======
         # Creates the turbine objects dynamically, using the plc_config
         # dictionary. In the current scenario only two turbines are used,
         # however, this method allows for n number of turbine objects to be
@@ -237,16 +235,13 @@ class GUI:
         # objects for these devices are imported as python classes. The classes
         # for the devices must have the same name as the device in the config
         # file.
->>>>>>> 22ee5efcbee2b8b3ee815f89cb52142e2dad11a5
         # ------------------------------------------------------------------ #
         for key, value in self.plc_config.items():
             for func in value.items('plc function'):
                 #Loads the classname specified for each function in plc_config
                 class_name = func[1]
-<<<<<<< HEAD
+
                 #Imports the classfile defined
-=======
->>>>>>> 22ee5efcbee2b8b3ee815f89cb52142e2dad11a5
                 func_class = getattr(importlib.import_module(class_name), class_name)
                 #Creates a new instance of the classfile
                 func_obj = func_class()
@@ -268,9 +263,9 @@ class GUI:
 if __name__=='__main__':
 
     #Starts the login window
-    login = Q.QApplication(sys.argv)
-    window = TurbineLogin.Ui()
-    login.exec_()
+    #login = Q.QApplication(sys.argv)
+    #window = TurbineLogin.Ui()
+    #login.exec_()
 
     #Starts the main GUI program
     gui = GUI()
