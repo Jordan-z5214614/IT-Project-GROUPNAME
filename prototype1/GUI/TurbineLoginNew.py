@@ -48,12 +48,11 @@ class Ui(QtWidgets.QMainWindow):
             otherview = SecondForm(self)
             otherview.show()
 
-
-
-
+    def successfulLogin(self):
+        self.close()
 
     def exitProcess(self):
-        self.destroy()
+        sys.exit()
 
 class SecondForm(QtWidgets.QDialog):
     def __init__(self, parent = None):
