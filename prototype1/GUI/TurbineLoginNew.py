@@ -21,8 +21,8 @@ class Ui(QtWidgets.QMainWindow):
 
     def loginProcess(self):
 
-        username = str(self.Username.text())
-        password = str(self.Password.text())
+        username = str(self.username.text())
+        password = str(self.password.text())
 
         # You can create a new database by changing the name within the quotes
         conn = sqlite3.connect('login.db')
