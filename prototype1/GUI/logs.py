@@ -10,6 +10,6 @@ c = conn.cursor()
 # Create table - CLIENTS
 c.execute('''DROP TABLE IF EXISTS LOGS ''')
 c.execute('''CREATE TABLE IF NOT EXISTS LOGS
-             ([date] DATE PRIMARY KEY NOT NULL, [rpm] NOT NULL, [pmw]  NOT NULL)''')
+             ([date] DATETIME PRIMARY KEY NOT NULL, [rpm] NOT NULL, [pmw]  NOT NULL)''')
 
 conn.commit()
