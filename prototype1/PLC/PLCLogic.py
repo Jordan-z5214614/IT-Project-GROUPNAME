@@ -3,16 +3,22 @@ import sys
 import logging
 
 def main(device_list,param_list,writeModbus,readModbus):
+    #Setup Logging
     logf = open("logic.log","w")
     try:
+        #Set initial PWM
         PWM = 0
-        writeModbus(3,0)
+
+        #Name device driver objects
         motor = device_list.get('dev0')
         sens = device_list.get('dev1')
+
+        #Main loop
         while True:
-            #time.sleep(0.1)
+            #Get parameters
             targetRPM = readModbus(int(param_list.get('targetrpm')))
             RPM = sens.getRPM()
+            #Calculate PWM change
             if (targetRPM == 0):
                 PWM = 0
                 motor.setPwm(1,PWM)
@@ -24,6 +30,7 @@ def main(device_list,param_list,writeModbus,readModbus):
                 PWM = PWM - 1
                 motor.setPwm(1,PWM/1000)
 
+            #Write changes to Modbus
             writeModbus(int(param_list.get('rpm')),RPM)
             writeModbus(int(param_list.get('pwm')),PWM)
     except Exception as e:
