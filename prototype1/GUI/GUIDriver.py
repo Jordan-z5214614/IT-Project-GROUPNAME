@@ -17,6 +17,7 @@ IP='111.220.27.216'
 USER='pi'
 PWD='gr0upn@m3'
 
+
 # ---------------------------------------------------------------- #
 # Defines the parameters that can be used by PyQt signal processes
 # to send signals outside the main GUI loop. Set and get are
