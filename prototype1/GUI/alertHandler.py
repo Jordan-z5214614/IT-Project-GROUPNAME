@@ -50,23 +50,23 @@ Class AlertHandler(Qt.QObject):
             data = self.readModbus(self.plc)
 
             currRpm = int(data.get('rpm'))
-            currPmw = float(data.get('pwm'))
+            currPwm = float(data.get('pwm'))
 
-            self.recordNewValues(self, currRpm, currPmw)
+            self.recordNewValues(self, currRpm, currPwm)
             
             #checks the database
-            alertRPM, alertPMW = self.checkAlert(self)
+            alertRPM, alertPWM = self.checkAlert(self)
 
             if(alertRPM):
                 ErrorMsg += "There Turbines speed are unstable"
 
-            if(alertPMW):
+            if(alertPWM):
                 count +=1
                 if(count > 1):
                     ErrorMsg += "There pressure is unstable"
             
             #reset counter to 0 if alertPMW is false at any point
-            if(not alertPMW):
+            if(not alertPWM):
                 count = 0
 
 
@@ -114,14 +114,14 @@ Class AlertHandler(Qt.QObject):
 
 
     #currRpm = int, currPmw = double
-    def recordNewValues(self, currRpm, currPmw):
+    def recordNewValues(self, currRpm, currPwm):
 
         if(not(isinstance(currRpm, float))):
             if(not(isinstance(currRpm, int))):
                     return
             
-        if(not(isinstance(currPmw, float))):
-            if(not(isinstance(currPmw, int))):
+        if(not(isinstance(currPwm, float))):
+            if(not(isinstance(currPwm, int))):
                 return
 
                 
@@ -132,7 +132,7 @@ Class AlertHandler(Qt.QObject):
         c = conn.cursor()
 
         # Insert records into current database logs
-        c.execute("INSERT INTO LOGS (date, rpm, pmw)  values('"+str(datetime.datetime.now())+"', '"+str(currRpm)+"', '"+str(currPmw)+"')")
+        c.execute("INSERT INTO LOGS (date, rpm, pmw)  values('"+str(datetime.datetime.now())+"', '"+str(currRpm)+"', '"+str(currPwm)+"')")
     
         conn.commit()
 
@@ -142,7 +142,7 @@ Class AlertHandler(Qt.QObject):
 
 
         alertRPM = False
-        alertPMW = False
+        alertPWM = False
         errorMsg = ""
 
         # You can create a new database by changing the name within the quotes
@@ -170,10 +170,10 @@ Class AlertHandler(Qt.QObject):
         
         if(float(resultTuple3) > 800):
             print("alert")
-            errorMsg += "\nError: The pressure (pmw) setting is unstable"
-            alertPMW = True
+            errorMsg += "\nError: The pressure (pwm) setting is unstable"
+            alertPWM = True
 
 
         conn.commit()
 
-        return alertRPM, alertPMW, errorMsg
+        return alertRPM, alertPWM, errorMsg
