@@ -50,7 +50,7 @@ Class AlertHandler(Qt.QObject):
             data = self.readModbus(self.plc)
 
             currRpm = int(data.get('rpm'))
-            currPmw = float(data.get('pmw'))
+            currPmw = float(data.get('pwm'))
 
             self.recordNewValues(self, currRpm, currPmw)
             
