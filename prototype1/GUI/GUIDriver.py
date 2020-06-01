@@ -36,21 +36,19 @@ class ModbusHandler(Qt.QThread):
     def __init__(self,plc,func):
         super(ModbusHandler, self).__init__()
         self.run= True
+
         #Import config/object lists
         self.plc = plc
         self.func = func
+
         #Create signal handler object
-        #for func in func_list.values():
         self.signals = HandlerSignals()
-        #self.signals = HandlerSignals()
+
         #Start the modbus local client
         self.startModbusClient()
 
-    #Override deafult PyQt run method
-    #@Qt.pyqtSlot()
     #Main signal handler loop
     def run(self):
-        print("running: ", self)
         # ------------------------------------------------------------ #
         # Loops over each function, and the assosiated plc config
         # Loads the data from the function class, writes the update
@@ -67,6 +65,14 @@ class ModbusHandler(Qt.QThread):
             time.sleep(0.1)
     def stop(self):
         self.run = False
+        #Zeros data for each param
+
+        data = {}
+        for param in self.plc.items('parameter addresses'):
+            data.update({param[0]:0})
+
+        #Writes 0s to Modbus to stop turbine
+        self.writeModbus(data,self.plc)
     # ---------------------------------------------------------------- #
     # Takes a data dict {parameter name:value} and a plc_config object
     # and then writes the data in the dict to the plc referenced in the
@@ -135,11 +141,11 @@ class GUI:
         # to communicate information in and out of the GUI thread (see PyQt slot/signal docs)
         # --------------------------------------------------------------------------------------- #
         for func, plc in zip(self.func_list.values(), self.plc_config.values()):
-            handler = ModbusHandler(plc,func)           #Handler object
+            handler = ModbusHandler(plc,func)                       #Handler object
             handler.signals.setValues.connect(func.setValues)       #Assign signals
             handler.signals.getValues.connect(func.getValues)
             handler.signals.stop.connect(handler.stop)
-            handler.start()                          #Start the thread
+            handler.start()                                         #Start the thread
             handlers.append(handler)                                #Store the handlers in a list so we can kill them later
 
 
@@ -156,15 +162,11 @@ class GUI:
         data = {}
 
         #iterates each plc config file and handler object
-        for plc, handler in zip(self.plc_config.values(), handlers):
-            #Zeros data for each param
-            for param in plc.items('parameter addresses'):
-                data.update({param[0]:0})
+        for handler in handlers:
 
-            handler.signals.setValues.emit(data)
-            handler.writeModbus(data,plc)
-            #handler.signals.stop.emit()
-            handler.terminate()
+            handler.signals.stop.emit()
+            handler.quit()
+            handler.wait()
 
     # ---------------------------------------------------------------- #
     # Starts the supervisor via SSH, and pulls the PLC config files
@@ -251,7 +253,6 @@ class GUI:
                 func_obj = func_class()
                 #Generates a string as a key
                 func_key = key + func[0]
-                print(func_key)
                 #adds the object to the func_list
                 self.func_list.update({func_key:func_obj})
 
