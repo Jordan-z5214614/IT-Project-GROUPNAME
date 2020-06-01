@@ -4,7 +4,9 @@ from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 import sqlite3
 import sys
 import hashlib
+
 attempts = 0
+
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -13,7 +15,7 @@ class Ui(QtWidgets.QMainWindow):
 
         self.button = self.findChild(QtWidgets.QPushButton, 'loginButton')
         self.button.clicked.connect(self.loginProcess)
-        
+
         self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
 
         self.button = self.findChild(QtWidgets.QPushButton, 'exitButton')
@@ -38,9 +40,10 @@ class Ui(QtWidgets.QMainWindow):
         global attempts
         attempts = attempts + 1
 
-
         if c.fetchone():
             self.successfulLogin()
+            return username
+            return password
 
         if attempts > 2:
             self.destroy()
@@ -49,15 +52,19 @@ class Ui(QtWidgets.QMainWindow):
             self.hide()
             otherview = SecondForm(self)
             otherview.show()
+            return username
+            return password
 
     def successfulLogin(self):
         self.close()
+        print('yes')
 
     def exitProcess(self):
         sys.exit()
 
+
 class SecondForm(QtWidgets.QDialog):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super(SecondForm, self).__init__(parent)
         uic.loadUi('Incorrect.ui', self)
         self.button = self.findChild(QtWidgets.QPushButton, 'continueb')
@@ -66,6 +73,7 @@ class SecondForm(QtWidgets.QDialog):
     def back(self):
         self.parent().show()
         self.close()
+
 
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
