@@ -11,6 +11,10 @@ To launch the scenario, supervisorDriver.py must be executed. This starts the se
 
 It is currently set up to be outwards facing on the network, so that the GUI can be run from any computer and used to control the scenario, however the GUI could also be run directly on the supervisor. In this instance, the full version of rapian must be loaded (not headless), or, alternativley, a command line GUI could be implemented. 
 
+#### A note on pathing
+
+Note that the supervisorDriver uses absolute paths in retrieving the config files and launching the PLCs. If you wish to use a different path simply modify these values accordingly, or, setup proper path managment.
+
 ### Modbus Server
 
 The server is an implementation of the pymodbus package. It is configured by default to use the standard TCP protocol, with the standard TCP framer. Refer to the pymodbus documentation [here](https://pymodbus.readthedocs.io/en/latest/source/example/synchronous_server.html). 
