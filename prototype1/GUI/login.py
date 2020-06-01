@@ -15,6 +15,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS LOGIN
              ([username] VARCHAR(50) PRIMARY KEY NOT NULL,[password] VARCHAR(50) NOT NULL)''')
 
 c.execute('''INSERT INTO LOGIN (username, password)  values('pi', 'gr0upn@m3')''')
+c.execute('''INSERT INTO LOGIN (username, password)  values('pi', '9a38273ad549ada8a8517692b3335a26')''')
 c.execute('''INSERT INTO LOGIN (username, password)  values('root', '5f4dcc3b5aa765d61d8327deb882cf99')''')
 c.execute('''INSERT INTO LOGIN (username, password)  values('guest', '0cef1fb10f60529028a71f58e54ed07b')''')
 c.execute('''INSERT INTO LOGIN (username, password)  values('BenChapmen', 'e99a18c428cb38d5f260853678922e03')''')
