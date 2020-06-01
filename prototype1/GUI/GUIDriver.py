@@ -269,10 +269,10 @@ class GUI:
 if __name__=='__main__':
 
     #Starts the login window
-    #login = Q.QApplication(sys.argv)
-    #window = TurbineLogin.Ui()
-    #login.exec_()
-
+    login = Q.QApplication(sys.argv)
+    window = TurbineLogin.Ui()
+    login.exec_()
+    print("test")
     #Starts the main GUI program
     gui = GUI()
 
