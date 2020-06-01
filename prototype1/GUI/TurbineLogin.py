@@ -43,8 +43,6 @@ class Ui(QtWidgets.QMainWindow):
 
         if c.fetchone():
             self.successfulLogin()
-            return username
-            return password
 
         if attempts > 2:
             self.destroy()
@@ -53,12 +51,9 @@ class Ui(QtWidgets.QMainWindow):
             self.hide()
             otherview = SecondForm(self)
             otherview.show()
-            return username
-            return password
 
     def successfulLogin(self):
         self.close()
-        print('yes')
 
     def exitProcess(self):
         sys.exit()
