@@ -17,3 +17,7 @@ For examples of the implementation of these methods see Turbine.py
 ### Modbus Client
 
 The GUI Driver also handles the modbus protocols. For each function defined, it starts a thread that contains a handler that sets and gets Values every 0.1 seconds using the methods defined above, and then reads/writes to modbus as appropriate. 
+
+## Turbine.py
+
+This is an example of a class that can be used to generate custom UIs to be loaded into the default GUI handler. Refer above for the required methods to make this work. This class uses PyQt to generate a widget, and then has helper methods to mamage input/output
