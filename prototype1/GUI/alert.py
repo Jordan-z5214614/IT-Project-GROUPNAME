@@ -9,7 +9,7 @@ def checkAlert():
 
     alertRPM = False
     alertPMW = False
-    errorMsg = ""
+    
 
     # You can create a new database by changing the name within the quotes
     conn = sqlite3.connect('logs.db')
@@ -28,21 +28,19 @@ def checkAlert():
     resultTuple2 = resultRemoveFromList[1]
     resultTuple3 = resultRemoveFromList[2]
     
-    if(int(resultTuple2) < 100):
-        print("alert")
-        errorMsg += "\nError: The turbine speed (rpm) setting is unstable"
+    if(int(resultTuple2) > 100):
+        #print("alert")
         alertRPM = True
 
     
-    if(float(resultTuple3) > 0.8):
-        print("alert")
-        errorMsg += "\nError: The pressure (pmw) setting is unstable"
+    if(float(resultTuple3) > 800):
+        #print("alert")
         alertPMW = True
 
 
     conn.commit()
 
-    return alertRPM, alertPMW, errorMsg
+    return alertRPM, alertPMW
 
 
 checkAlert()
