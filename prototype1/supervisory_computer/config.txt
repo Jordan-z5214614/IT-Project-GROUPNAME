@@ -1,7 +1,20 @@
+# -------------------------------------------- #
+# A list of the PLC devices to be used in the 
+# scenario. Format [name] = [hostname], where name
+# is whatever you like, and hostname is either 
+# the hostname on the local network, or IP
+# -------------------------------------------- #
 [plc list]
 plc1 = plc1.local
 plc2 = plc2.local
 
+# -------------------------------------------- #
+# This section requires an element for each name
+# that was specified above. Each element should
+# have username = [username] and 
+# password = [password], which are the login 
+# credentials for each device using SSH
+# -------------------------------------------- #
 [plc1]
 username = pi
 password = raspberry
