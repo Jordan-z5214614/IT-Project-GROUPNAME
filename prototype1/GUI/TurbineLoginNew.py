@@ -13,6 +13,8 @@ class Ui(QtWidgets.QMainWindow):
 
         self.button = self.findChild(QtWidgets.QPushButton, 'loginButton')
         self.button.clicked.connect(self.loginProcess)
+        
+        self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
 
         self.button = self.findChild(QtWidgets.QPushButton, 'exitButton')
         self.button.clicked.connect(self.exitProcess)
