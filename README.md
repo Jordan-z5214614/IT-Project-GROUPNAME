@@ -73,9 +73,19 @@ A detailed physical system that takes inputs from the emulated system to provide
 
 ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego-Motor-in-Use.JPG)
 
- - turbine pieces x2 #TODO change to be open "can really be anything that connects to the motor
- - appropriate connectors and pieces (see diagram below for full picture) #TODO add more infor and get picture of whole system from Luke
+ - turbine pieces x2
+ - Hall Effect Sensor x 1
+ - Modified LEGO gearing and connector magnets
+ - appropriate connectors and pieces (see diagram below for full picture) 
+ 
+ ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego_Setup_Full_1.JPG)
+ ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego_Setup_Full_2.JPG)
+ ![alt text](https://github.com/Jordan-z5214614/IT-Project-GROUPNAME/blob/master/Images%20of%20the%20Parts%20for%20the%20Project/Lego_Setup_Full_3.JPG)
+ 
+ 
  - Lego power plant station (optional please view the Lego Design folder for more details)
+ - Router/Switch (support equipment)
+ - LEGO battery Pack (support equipment)
  
 If you wish to add to the design e.g. add extra machines or turbines, then extra physical requirments may be needed. Please view the 'Create Your Own' section of the "README.md" file for more information about extending this project. 
  </br></br>
