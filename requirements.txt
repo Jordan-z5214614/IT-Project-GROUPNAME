@@ -22,7 +22,7 @@ PyQt5-sip == 12.7.2
 pyserial == 3.4
 pywin32-ctypes == 0.2.0
 requests == 2.23.0
-setuptools == 41.2.0
+setuptools == 65.5.1
 six == 1.14.0
 sympy == 1.5.1
 urllib3 == 1.25.8
